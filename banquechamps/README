@@ -1,0 +1,5 @@
+GET /dir : liste des répertoires de champs (récursif)
+GET /selection : liste des listes de sélection
+GET /selection/<code>/entree : liste des entrées de la liste de sélection de code <code>
+GET /info : liste des champs, y compris libellés et aides
+

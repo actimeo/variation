@@ -1,0 +1,19 @@
+#ressourceselect-ul {
+    padding: 0;
+}
+
+.ressourceselect-res {
+    list-style-type: none;
+    cursor: pointer;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    line-height: 24px;
+    margin: 2px 5px;
+    padding: 3px 5px 1px 5px;
+    background-color: #F4F4F4;
+}
+
+.ressourceselect-res:hover {
+    background-color: #eee;
+}
