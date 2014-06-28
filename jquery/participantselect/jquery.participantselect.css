@@ -1,0 +1,43 @@
+#participantselect-frame {
+    background-color: #eee; 
+    width: 315px; 
+    margin-bottom: 10px; 
+    padding: 5px;
+}
+
+#participantselect-frame label.etiq {
+    display: inline-block;
+    width: 60px;
+}
+
+#participantselect-result {
+    border: 1px solid #3D84CC;
+    width: 323px;
+    height: 300px;
+    overflow: auto;
+}
+
+#participantselect-result ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#participantselect-result li {
+    cursor: pointer;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    line-height: 24px;
+    margin: 2px 5px;
+    padding: 3px 5px 1px 5px;
+    background-color: #F4F4F4;
+}
+
+#participantselect-result li:hover {
+    background-color: #eee;
+}
+
+#participantselect-frame fieldset .label {
+    display: inline-block;
+    width: 85px;
+}
