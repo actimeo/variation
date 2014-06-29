@@ -48,7 +48,8 @@ $nos_id = $_POST['nos_id'];
 if ($nos_id == 'null') 
   $nos_id = NULL;
 $nom = $_POST['nom'];
+$code = $_POST['code'];
 $the_id = $_POST['the_id'];
 
-$base->notes_notes_update ($_SESSION['token'], $nos_id, $nom, $the_id);
+$base->notes_notes_update ($_SESSION['token'], $nos_id, $code, $nom, $the_id);
 ?>

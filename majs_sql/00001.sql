@@ -427,5 +427,15 @@ BEGIN
 	  
 	  UPDATE document.documents SET dos_code = pour_code (dos_titre) WHERE dos_code ISNULL;
 	END IF;
+
+	-- Ajout notes.notes.nos_code
+	IF NOT EXISTS (SELECT 1 FROM information_schema.columns 
+	   	        WHERE table_schema = 'notes' AND 
+	   		        table_name ='notes' and
+		 	       column_name ='nos_code') THEN
+ 	  ALTER TABLE notes.notes ADD COLUMN nos_code varchar UNIQUE;
+	  
+	  UPDATE notes.notes SET nos_code = pour_code (nos_nom) WHERE nos_code ISNULL;
+	END IF;
 END;
 $$;

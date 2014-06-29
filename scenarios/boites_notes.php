@@ -65,7 +65,8 @@ $f = fopen ($filename, 'r');
 while ( ($nom = fgets ($f)) !== FALSE) {
   $nom = trim ($nom);
   $the_id = $base->notes_theme_update ($token, null, $nom, $por_ids);
-  $base->notes_notes_update ($token, null, $nom, $the_id);
+  $code = $base->pour_code ($nom);
+  $base->notes_notes_update ($token, null, $code, $nom, $the_id);
 }
 
 $base->commit ();

@@ -307,8 +307,9 @@ $(document).ready (function () {
 
     $("#nos_save").click (function () {
 	var nom = $("#nos_nom").val();
+	var code = $("#nos_code").val();
 	var the_id = $("#nos_the_id").val();
-	$.post('/ajax/root_interface/notes_update.php', { nos_id: displayed_nos_id, nom: nom, the_id: the_id }, function () {
+	$.post('/ajax/root_interface/notes_update.php', { nos_id: displayed_nos_id, nom: nom, code: code, the_id: the_id }, function () {
 	    tsm_type_notes_id_update ();
 	    load_tsm (displayed_tsm);
 	});
@@ -945,6 +946,7 @@ function affiche_nos (nos_id) {
   $.getJSON ('/ajax/root_interface/notes_get.php', { nos_id: nos_id }, function (data) {
 	displayed_nos_id = nos_id;
 	$("#nos_nom").val (data.nos_nom);
+	$("#nos_code").val (data.nos_code);
 	$("#nos_the_id").val (data.the_id);
     });
 
@@ -1610,6 +1612,9 @@ Code :<br/>
 <h2>Vue de notes</h2>
 Nom :<br/>
 <input type="text" size="30" id="nos_nom"></input><br/>
+
+Code :<br/>
+<input type="text" size="30" id="nos_code"></input><br/>
 
 Boîte de notes : <br/>
 <select id="nos_the_id"><option value=""></option><?= affiche_themes (); ?></select><br/>

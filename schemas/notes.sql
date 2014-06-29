@@ -685,7 +685,8 @@ Remarque :
 Nécessite le droit de configuration de l''interface';
 
 DROP FUNCTION IF EXISTS notes_notes_update(prm_nos_id integer, prm_nom character varying, prm_the_id integer);
-CREATE OR REPLACE FUNCTION notes_notes_update(prm_token integer, prm_nos_id integer, prm_nom character varying, prm_the_id integer) RETURNS integer
+DROP FUNCTION IF EXISTS notes_notes_update(prm_token integer, prm_nos_id integer, prm_nom character varying, prm_the_id integer);
+CREATE OR REPLACE FUNCTION notes_notes_update(prm_token integer, prm_nos_id integer, prm_code varchar, prm_nom character varying, prm_the_id integer) RETURNS integer
     LANGUAGE plpgsql
     AS $$
 DECLARE
@@ -694,19 +695,20 @@ BEGIN
 	PERFORM login._token_assert (prm_token, FALSE, FALSE);
 	PERFORM login._token_assert_interface (prm_token);
 	IF prm_nos_id NOTNULL THEN
-		UPDATE notes.notes SET nos_nom = prm_nom, the_id = prm_the_id WHERE nos_id = prm_nos_id;
+		UPDATE notes.notes SET nos_code = prm_code, nos_nom = prm_nom, the_id = prm_the_id WHERE nos_id = prm_nos_id;
 		RETURN prm_nos_id;
 	ELSE
-		INSERT INTO notes.notes (the_id, nos_nom) VALUES (prm_the_id, prm_nom) RETURNING nos_id INTO ret;
+		INSERT INTO notes.notes (the_id, nos_code, nos_nom) VALUES (prm_the_id, prm_code, prm_nom) RETURNING nos_id INTO ret;
 		RETURN ret;
 	END IF;
 END;
 $$;
-COMMENT ON FUNCTION notes_notes_update(prm_token integer, prm_nos_id integer, prm_nom character varying, prm_the_id integer) IS
+COMMENT ON FUNCTION notes_notes_update(prm_token integer, prm_nos_id integer, prm_code varchar, prm_nom character varying, prm_the_id integer) IS
 'Modifie les informations de configuration d''une page de notes ou crée une nouvelle configuration.
 Entrées :
  - prm_token : Token d''authentification
  - prm_nos_id : Identifiant de la configuration de page à modifier ou NULL pour créer une nouvelle configuration
+ - prm_code : Code pour la page
  - prm_nom : Nouveau nom de page
  - prm_the_id : Identifiant de la boîte thématique permettant de filtrer les notes sur cette page
 Remarque :
