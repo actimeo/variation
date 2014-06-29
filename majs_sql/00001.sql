@@ -417,5 +417,15 @@ BEGIN
 	  
 	  UPDATE liste.liste SET lis_code = pour_code (lis_nom) WHERE lis_code ISNULL;
 	END IF;
+
+	-- Ajout document.documents.dos_code
+	IF NOT EXISTS (SELECT 1 FROM information_schema.columns 
+	   	        WHERE table_schema = 'document' AND 
+	   		        table_name ='documents' and
+		 	       column_name ='dos_code') THEN
+ 	  ALTER TABLE document.documents ADD COLUMN dos_code varchar UNIQUE;
+	  
+	  UPDATE document.documents SET dos_code = pour_code (dos_titre) WHERE dos_code ISNULL;
+	END IF;
 END;
 $$;

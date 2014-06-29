@@ -76,6 +76,7 @@ if (isset ($_GET['dos'])) {
     // Si on enregistre et qu'il y a des erreurs 
     $dos['dos_id'] = $dos_id;
     $dos['dos_titre'] = $_POST['ed_nom'];
+    $dos['dos_code'] = $_POST['ed_code'];
     $dos['dty_id'] = $_POST['ed_dty'];
     $dos_secteurs = array ();
     if (count ($_POST['ed_secteur'])) {
@@ -92,6 +93,7 @@ if (isset ($_GET['dos'])) {
     // Si on ajoute et qu'il y a une erreur 
     $dos['dos_id'] = $dos_id;
     $dos['dos_titre'] = $_POST['ed_nom'];
+    $dos['dos_code'] = $_POST['ed_code'];
     $dos['dty_id'] = $_POST['ed_dty'];
     $dos_secteurs = array ();
     if (count ($_POST['ed_secteur'])) {
@@ -143,11 +145,16 @@ function on_ed_suppr_click () {
   </tr>
 
   <tr class="pair">
+    <td>Code</td>
+    <td><input size="30" name="ed_code" value="<?= $dos['dos_code'] ?>"></input><?= $erreur['ed_code'] ?></td>
+  </tr>
+
+  <tr class="impair">
     <td>Thématiques</td>
     <td><?php liste_secteurs_cb ($dos_secteurs) ?></td>
   </tr>
 
-  <tr class="impair">
+  <tr class="pair">
     <td>Type</td>
     <td><?php liste_types_cb ($dos['dty_id']) ?></td>
   </tr>
@@ -219,12 +226,15 @@ function documents_save ($post) {
   if (!strlen ($post['ed_nom'])) {
     set_erreur ('ed_nom');
   }
+  if (!strlen ($post['ed_code'])) {
+    set_erreur ('ed_code');
+  }
   if (count ($erreur))
     return false;
 
   global $base, $secteurs;
   $dos_id = $_GET['dos'];
-  $base->document_documents_save ($_SESSION['token'], $dos_id, $post['ed_nom'], $post['ed_dty']);
+  $base->document_documents_save ($_SESSION['token'], $dos_id, $post['ed_code'], $post['ed_nom'], $post['ed_dty']);
 
   // Sauve les liens secteur
   if (count ($post['ed_secteur'])) {
@@ -251,13 +261,16 @@ function documents_add ($post) {
   if (!strlen ($post['ed_nom'])) {
     set_erreur ('ed_nom');
   }
+  if (!strlen ($post['ed_code'])) {
+    set_erreur ('ed_code');
+  }
   if (count ($erreur))
     return false;
   
   global $base, $secteurs;
 
   // Crée une nouvelle vue events
-  $new_dos_id = $base->document_documents_save ($_SESSION['token'], NULL, $post['ed_nom'], $post['ed_dty']);
+  $new_dos_id = $base->document_documents_save ($_SESSION['token'], NULL, $post['ed_code'], $post['ed_nom'], $post['ed_dty']);
 
   // Sauve les liens secteur
   if (count ($post['ed_secteur'])) {

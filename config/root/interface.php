@@ -280,7 +280,8 @@ $(document).ready (function () {
 
     $("#dos_save").click (function () {
 	var nom = $("#dos_titre").val();
-	$.post('/ajax/root_interface/documents_update.php', { dos_id: displayed_dos_id, nom: nom, dty_id: $("#dos_dty_id").val() }, function () {
+	var code = $("#dos_code").val();
+	$.post('/ajax/root_interface/documents_update.php', { dos_id: displayed_dos_id, nom: nom, code: code, dty_id: $("#dos_dty_id").val() }, function () {
 	    tsm_type_documents_id_update ();
 	    load_tsm (displayed_tsm);
 	});
@@ -920,6 +921,7 @@ function affiche_dos (dos_id) {
     $.getJSON ('/ajax/root_interface/documents_get.php', { dos_id: dos_id }, function (data) {
 	displayed_dos_id = dos_id;
 	$("#dos_titre").val (data.dos_titre);
+	$("#dos_code").val (data.dos_code);
 	$("#dos_dty_id").val(data.dty_id);
     });
     $.getJSON ('/ajax/root_interface/documents_secteur_liste.php', { dos_id: dos_id }, function (data) {
@@ -1588,6 +1590,9 @@ Entité : <br/>
 <h2>Vue de documents</h2>
 Nom :<br/>
 <input type="text" size="30" id="dos_titre"></input><br/>
+
+Code :<br/>
+<input type="text" size="30" id="dos_code"></input><br/>
 
 <button id="dos_save">Enregistrer</button>
 <button id="dos_supprime">Supprimer</button>

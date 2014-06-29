@@ -1001,7 +1001,7 @@ DROP FUNCTION IF EXISTS document_documents_update(prm_dos_id integer, prm_titre 
 -- END;
 -- $$;
 
-CREATE OR REPLACE FUNCTION document_documents_save(prm_token integer, prm_dos_id integer, prm_titre character varying, prm_dty_id integer) RETURNS integer
+CREATE OR REPLACE FUNCTION document_documents_save(prm_token integer, prm_dos_id integer, prm_code varchar, prm_titre character varying, prm_dty_id integer) RETURNS integer
     LANGUAGE plpgsql
     AS $$
 DECLARE
@@ -1010,16 +1010,16 @@ BEGIN
 	PERFORM login._token_assert (prm_token, FALSE, FALSE);
 	PERFORM login._token_assert_interface (prm_token);
 	IF prm_dos_id ISNULL THEN
-		INSERT INTO document.documents (dos_titre, dty_id) VALUES (prm_titre, prm_dty_id) 
+		INSERT INTO document.documents (dos_titre, dos_code, dty_id) VALUES (prm_titre, prm_code, prm_dty_id) 
 		       RETURNING dos_id INTO ret;
 		RETURN ret;
 	ELSE
-		UPDATE document.documents SET dos_titre = prm_titre, dty_id = prm_dty_id WHERE dos_id = prm_dos_id;
+		UPDATE document.documents SET dos_titre = prm_titre, dos_code = prm_code, dty_id = prm_dty_id WHERE dos_id = prm_dos_id;
 		RETURN prm_dos_id;
 	END IF;
 END;
 $$;
-COMMENT ON FUNCTION document_documents_save(prm_token integer, prm_dos_id integer, prm_titre character varying, prm_dty_id integer) IS
+COMMENT ON FUNCTION document_documents_save(prm_token integer, prm_dos_id integer, prm_code varchar, prm_titre character varying, prm_dty_id integer) IS
 'Modifie les informations de configuration d''une page de documents ou crée une nouvelle configuration.
 Entrées :
  - prm_token : Token d''authentification

@@ -46,11 +46,12 @@ $base = new PgProcedures ($pghost, $pguser, $pgpass, $pgbase);
 
 $dos_id = $_POST['dos_id'];
 $nom = $_POST['nom'];
+$code = $_POST['code'];
 $dty_id = $_POST['dty_id'];
 
 if ($dos_id && $dos_id != 'null') {
-  $base->document_documents_save ($_SESSION['token'], $dos_id, $nom, $dty_id);
+  $base->document_documents_save ($_SESSION['token'], $dos_id, $code, $nom, $dty_id);
 } else {
-  $base->document_documents_save ($_SESSION['token'], NULL, $nom, $dty_id);
+  $base->document_documents_save ($_SESSION['token'], NULL, $code, $nom, $dty_id);
 }
 ?>

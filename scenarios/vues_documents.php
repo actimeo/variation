@@ -76,17 +76,17 @@ $groupes = array ('administration' => array ('nom' => 'Administration',
 
 /* 1 thématique */
 foreach ($secteurs as $secteur) {
-  $dos_id = $base->document_documents_save ($token, null, 'Documents '.$secteur['sec_nom'], null);
+  $dos_id = $base->document_documents_save ($token, null, 'documents_'.$secteur['sec_code'], 'Documents '.$secteur['sec_nom'], null);
   $base->document_documents_secteurs_set ($token, $dos_id, array ($secteur['sec_code']));
 }
 
 /* toutes thématiques */
-$dos_id = $base->document_documents_save ($token, null, 'Documents (toutes thématiques)', null);
+$dos_id = $base->document_documents_save ($token, null, 'documents_toutes_thematiques', 'Documents (toutes thématiques)', null);
 $base->document_documents_secteurs_set ($token, $dos_id, $codes_secteurs);
 
 /* groupe de thématiques */
 foreach ($groupes as $groupe_code => $groupe) {
-  $dos_id = $base->document_documents_save ($token, null, 'Documents '.$groupe['nom'], null);
+  $dos_id = $base->document_documents_save ($token, null, 'documents_'.$groupe_code, 'Documents '.$groupe['nom'], null);
   $base->document_documents_secteurs_set ($token, $dos_id, $groupe['secteurs']);
 }
 
