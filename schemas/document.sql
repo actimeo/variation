@@ -1001,6 +1001,7 @@ DROP FUNCTION IF EXISTS document_documents_update(prm_dos_id integer, prm_titre 
 -- END;
 -- $$;
 
+DROP FUNCTION IF EXISTS document_documents_save(prm_token integer, prm_dos_id integer, prm_titre character varying, prm_dty_id integer);
 CREATE OR REPLACE FUNCTION document_documents_save(prm_token integer, prm_dos_id integer, prm_code varchar, prm_titre character varying, prm_dty_id integer) RETURNS integer
     LANGUAGE plpgsql
     AS $$
