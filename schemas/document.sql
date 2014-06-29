@@ -1025,6 +1025,7 @@ COMMENT ON FUNCTION document_documents_save(prm_token integer, prm_dos_id intege
 Entrées :
  - prm_token : Token d''authentification
  - prm_dos_id : Identifiant de la configuration de page à modifier ou NULL pour créer une nouvelle configuration
+ - prm_code : Code de la page
  - prm_titre : Nouveau nom de page
  - prm_dty_id : Identifiant du type de document permettant de filtrer les documents sur cette page
 Remarque :
