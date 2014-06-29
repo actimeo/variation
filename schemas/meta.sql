@@ -68,6 +68,7 @@ CREATE TYPE meta_info_groupe_liste AS (
 	ing_id integer,
 	ing_ordre integer,
         ing__groupe_cycle boolean,
+        ing_obligatoire boolean,
 	inf_id integer,
 	int_id integer,
 	inf_code character varying,
@@ -94,7 +95,7 @@ DECLARE
 BEGIN
 	PERFORM login._token_assert (prm_token, FALSE, FALSE);
 	FOR row IN
-		SELECT info_groupe.ing_id, info_groupe.ing_ordre, info_groupe.ing__groupe_cycle, info.* FROM meta.info
+		SELECT info_groupe.ing_id, info_groupe.ing_ordre, info_groupe.ing__groupe_cycle, info_groupe.ing_obligatoire, info.* FROM meta.info
 		INNER JOIN meta.info_groupe USING(inf_id) WHERE gin_id = prm_gin_id ORDER BY ing_ordre 
 	LOOP
 		RETURN NEXT row;
