@@ -230,7 +230,7 @@ function on_inf__date_echeance_click () {
     <td>Thématique&nbsp;:</td><td><select disabled id="inf__groupe_type"><option value=""></option><?= liste_secteurs ($secteurs, $info['inf__groupe_type']) ?></select></td>
   </tr>
   <tr class="champ_type type_<?= $thetypes['groupe']['int_id'] ?>">
-  <td>Public concerné&nbsp;:</td><td><select disabled id="inf__groupe_soustype"><?= liste_secteur_types ($info['inf__groupe_type'], $info['inf__groupe_soustype']); ?></select></td>
+  <td>Public concerné&nbsp;:</td><td><select id="inf__groupe_soustype"><?= liste_secteur_types ($info['inf__groupe_type'], $info['inf__groupe_soustype']); ?></select></td>
   </tr>
   
   <tr class="champ_type type_<?= $thetypes['contact']['int_id'] ?>">

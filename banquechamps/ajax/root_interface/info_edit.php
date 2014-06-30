@@ -36,7 +36,6 @@ $(document).ready (function () {
     $("#inf_enregistrer").click (on_inf_enregistrer_click);
     $("#inf__selection_code").change (on_inf__selection_code_change);
     $("#inf__selection_code_edit").click (on_inf__selection_code_edit_click);
-    $("#inf__groupe_type").change (on_inf__groupe_type_change);
     $("#inf__date_echeance").click (on_inf__date_echeance_click);
 
     on_inf__date_echeance_click ();
@@ -131,18 +130,6 @@ function on_inf__selection_code_edit_click () {
     }
 }
 
-function on_inf__groupe_type_change () {
-    $.post("ajax/meta_secteur_type_liste_par_code.php", { 
-	prm_sec_code: $(this).val(),
-	output: 'json'}, function (data) {
-	    $("#inf__groupe_soustype").empty();
-	    $("#inf__groupe_soustype").append('<option value=""></option>');
-	    $.each (data, function (idx, val) {
-		$("#inf__groupe_soustype").append('<option value="'+val.set_id+'">'+val.set_nom+'</option>');
-	    });
-	});   
-}
-
 function on_inf__date_echeance_click () {
     if ($("#inf__date_echeance").is (':checked')) {
 	$(".tr_date_echeance_plus").show();
@@ -185,9 +172,6 @@ function on_inf__date_echeance_click () {
 
   <tr class="champ_type type_<?= $thetypes['groupe']['int_id'] ?>">
     <td>Secteur&nbsp;:</td><td><select id="inf__groupe_type"><option value=""></option><?= liste_secteurs ($secteurs, $info['inf__groupe_type']) ?></select></td>
-  </tr>
-  <tr class="champ_type type_<?= $thetypes['groupe']['int_id'] ?>">
-  <td>Type&nbsp;:</td><td><select id="inf__groupe_soustype"><?= liste_secteur_types ($info['inf__groupe_type'], $info['inf__groupe_soustype']); ?></select></td>
   </tr>
   
   <tr class="champ_type type_<?= $thetypes['contact']['int_id'] ?>">
@@ -247,18 +231,6 @@ function liste_secteurs ($secteurs, $code) {
     $selected = ($secteur['sec_code'] == $code) ? " selected" : "";
     echo '<option value="'.$secteur['sec_code'].'"'.$selected.'>'.$secteur['sec_nom'].'</option>';
   }  
-}
-
-function liste_secteur_types ($secteur, $set_id) {
-  global $base;
-  $types = $base->meta_secteur_type_liste_par_code ($secteur);
-  echo '<option value=""></option>';
-  if (count ($types)) {
-    foreach ($types as $type) {
-      $selected = $type['set_id'] == $set_id ? ' selected' : '';
-      echo '<option value="'.$type['set_id'].'"'.$selected.'>'.$type['set_nom'].'</option>';
-    }
-  }
 }
 
 function liste_entites ($entites, $code) {
