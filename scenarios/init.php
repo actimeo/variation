@@ -75,11 +75,20 @@ $base->etablissement_secteurs_set ($token, $eta_id, $codes_secteurs);
 $grp_id = $base->groupe_add ($token, "Prise en charge par défaut", $eta_id,
 			     NULL, NULL, NULL);
 $base->groupe_secteurs_set ($token, $grp_id, array ('prise_en_charge'));
+$inf = $base->meta_info_get_par_code ($token, 'groupe_prise_en_charge');
+if ($inf['inf_id']) {
+  $base->groupe_info_secteur_save ($token, $grp_id, 'prise_en_charge', $inf['inf_id']);
+}
 
 /* Ajout d'un groupe d'utilisateurs */
 $gut_id = $base->login_grouputil_add ($token, "Administrateur système");
 $base->login_grouputil_groupe_set ($token, $gut_id, array ($grp_id));
 $base->login_grouputil_portail_set ($token, $gut_id, array ($por_id));
+
+/* Ajout d'un usager */
+$per_id = $base->personne_ajoute ($token, 'usager');
+$base->personne_info_varchar_set ($token, $per_id, 'nom', 'DURAND', $uti_id_variation);
+$base->personne_info_varchar_set ($token, $per_id, 'prenom', 'Pierre', $uti_id_variation);
 
 /* Ajout d'un employé */
 $per_id = $base->personne_ajoute ($token, 'personnel');

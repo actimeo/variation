@@ -114,7 +114,7 @@ DECLARE
 BEGIN
 	PERFORM login._token_assert (prm_token, FALSE, FALSE);
 	FOR row IN
-	    SELECT info_groupe.ing_id, info_groupe.ing_ordre, info_groupe.ing__groupe_cycle, info.* 
+	    SELECT info_groupe.ing_id, info_groupe.ing_ordre, info_groupe.ing__groupe_cycle, info_groupe.ing_obligatoire, info.* 
     	    FROM meta.info
 	    INNER JOIN meta.info_groupe USING(inf_id) 
 	    INNER JOIN meta.groupe_infos USING(gin_id)
