@@ -981,7 +981,7 @@ function getItems (node) {
 		}
 	    }
 	};
-	items.importer_cat = {
+	/*items.importer_cat = {
 	    "label" : "Importer catégorie",
 	    "action": function () {
 		$("#dlg").html ('<p>Sélectionnez un fichier à importer : </p><input type="file" onchange="onFileSelected(this.files, \'categorie\', \'\')">');
@@ -989,7 +989,7 @@ function getItems (node) {
 		    title: "Importer une catégorie"
 		});
 	    }
-	};
+	    };*/
     } else if (type == 'categorie') {
 	items.exporter = {
 	    "label": "Exporter catégorie",
@@ -1060,14 +1060,14 @@ function getItems (node) {
 	    }
 	};
     } else if (type == 'entite') {
-	items.exporter = {
+      /*items.exporter = {
 	    "label": "Exporter entité",
 	    "action": function () {
 		var por = node.parents('li').attr('id');
 		var ent = node.attr('id').replace (/\d*$/, '');
 		window.open ('/export/accueil.php?basename=entite&ent='+ent+'&por='+por, 'export', '');
 	    }
-	}
+	    }*/
 	items.nouveau_menu = {
 	    "label" : "Nouveau menu",
 	    "action": function () {
@@ -1081,7 +1081,7 @@ function getItems (node) {
 		}
 	    }
 	};	
-	items.importer_entite = {
+	/*items.importer_entite = {
 	    "label" : "Importer entité",
 	    "action": function () {
 		var por = node.parents('li').attr('id');
@@ -1091,8 +1091,8 @@ function getItems (node) {
 		    title: "Importer une entité"
 		});
 	    }
-	};
-	items.importer_menu = {
+	    };*/
+	/*items.importer_menu = {
 	    "label" : "Importer menu",
 	    "action": function () {
 		var por = node.parents('li').attr('id');
@@ -1102,16 +1102,16 @@ function getItems (node) {
 		    title: "Importer un menu"
 		});
 	    }
-	};
+	    };*/
     } else if (type == 'principal') {
-	items.exporter = {
+      /*items.exporter = {
 	    "label": "Exporter fenêtre principale",
 	    "action": function () {
 		var por = node.parents('li').attr('id')
 		window.open ('/export/accueil.php?basename=principal&por='+por, 'export', ''); // TODO
 	    }
-	}
-	items.importer_principal = {
+	    }*/
+      /*items.importer_principal = {
 	    "label": "Importer fenêtre principale",
 	    "action": function () {
 		var por = node.parents('li').attr('id');
@@ -1120,7 +1120,7 @@ function getItems (node) {
 		    title: "Importer un menu"
 		});
 	    }
-	}
+	    }*/
 	items.nouveau_menu = {
 	    "label" : "Nouveau menu",
 	    "action": function () {
@@ -1133,7 +1133,7 @@ function getItems (node) {
 		}
 	    }
 	};	
-	items.importer_menu = {
+	/*items.importer_menu = {
 	    "label" : "Importer menu (x)",
 	    "action": function () {
 		var por = node.parents('li').attr('id')
@@ -1142,14 +1142,14 @@ function getItems (node) {
 		    title: "Importer un menu"
 		});
 	    }
-	};
+	    };*/
     } else if (type == 'menu') {
-	items.exporter = {
+      /*items.exporter = {
 	    "label": "Exporter menu",
 	    "action": function () {
 		window.open ('/export/accueil.php?basename=menu&id='+node.attr('id'), 'export', '');
 	    }
-	};
+	    };*/
 	items.renommer = {
 	    "label" : "Renommer menu",
 	    "action": function () {
@@ -1182,7 +1182,7 @@ function getItems (node) {
 		}
 	    }
 	};	
-	items.importer_ssmenu = {
+	/*items.importer_ssmenu = {
 	    "label" : "Importer fiche",
 	    "action": function () {
 		$("#dlg").html ('<p>Sélectionnez un fichier à importer : </p><input type="file" onchange="onFileSelected(this.files, \'sousmenu\', \''+node.attr('id')+'\')">');
@@ -1190,7 +1190,7 @@ function getItems (node) {
 		    title: "Importer une fiche"
 		});
 	    }
-	};
+	    };*/
 	items.deplacer_haut = {
 	    "label": "Déplacer vers le haut",
 	    "action": function () {
@@ -1210,12 +1210,12 @@ function getItems (node) {
 	    }
 	};
     } else if (type == 'topmenu') {
-	items.exporter = {
+      /*items.exporter = {
 	    "label": "Exporter menu",
 	    "action": function () {
 		window.open ('/export/accueil.php?basename=topmenu&id='+node.attr('id'), 'export', '');
 	    }
-	};
+	    };*/
 	items.renommer = {
 	    "label" : "Renommer menu",
 	    "action": function () {
@@ -1267,12 +1267,12 @@ function getItems (node) {
 	    }
 	};
     } else if (type == "page") {
-	items.exporter = {
+      /*items.exporter = {
 	    "label": "Exporter fiche",
 	    "action": function () {
 		window.open ('/export/accueil.php?basename=sousmenu&id='+node.attr('id'), 'export', '');
 	    }
-	};
+	    };*/
 	items.renommer = {
 	    "label" : "Renommer fiche",
 	    "action": function () {
