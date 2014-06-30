@@ -128,7 +128,7 @@ function on_secteur_event_click () {
 
 function on_doc_secteur_ajoute_click () {
     $("#dlg2").secteurSelect ({
-      'title': 'Sélection d\'un thème',
+      'title': 'Sélection d\'une thématique',
 	  'url': '/ajax/document_documents_secteur_liste_details_etab.php?prm_token='+$("#token").val()+'&prm_dos_id='+$("#dos_id").val()+'&prm_eta_id='+$("#eta_id").val()+'&output=json',
 	'return': function (id, nom) {
 	    $("#doc_secteurs").append ('<span class="secteur_event" id="doc_sec_'+id+'"><nobr><span>'+nom+'</span></nobr></span>');
@@ -268,7 +268,7 @@ function on_doc_fichier_click () {
 <input type="hidden" id="eta_id" value="<?= $_SESSION['eta_id'] ?>"></input>
 <table class="tabledlg">
 <tr>
-<th>Thèmes&nbsp;: </th>
+<th>Thématiques&nbsp;: </th>
 <td><?= affiche_secteurs (); ?></td>
 </tr>
 <tr>

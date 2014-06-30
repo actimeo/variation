@@ -1,7 +1,7 @@
 (function ($) {
     $.fn.secteurSelect = function (options) {
 	var defaults = {
-	    "title": "Sélection d'un secteur",
+	    "title": "Sélection d'une thématique",
 	    'url': '/',
 	    'return': null
 	};

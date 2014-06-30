@@ -171,7 +171,7 @@ function on_inf__date_echeance_click () {
   </tr>
 
   <tr class="champ_type type_<?= $thetypes['groupe']['int_id'] ?>">
-    <td>Secteur&nbsp;:</td><td><select id="inf__groupe_type"><option value=""></option><?= liste_secteurs ($secteurs, $info['inf__groupe_type']) ?></select></td>
+    <td>Thématique&nbsp;:</td><td><select id="inf__groupe_type"><option value=""></option><?= liste_secteurs ($secteurs, $info['inf__groupe_type']) ?></select></td>
   </tr>
   
   <tr class="champ_type type_<?= $thetypes['contact']['int_id'] ?>">
@@ -201,7 +201,7 @@ function on_inf__date_echeance_click () {
   </tr>
 
   <tr class="tr_date_echeance_plus champ_type type_<?= $thetypes['date']['int_id'] ?>">
-    <td>Secteur&nbsp;:</td><td><select id="inf__date_echeance_secteur"><option value=""></option><?= liste_secteurs ($secteurs, $info['inf__date_echeance_secteur']) ?></select></td>
+    <td>Thématique&nbsp;:</td><td><select id="inf__date_echeance_secteur"><option value=""></option><?= liste_secteurs ($secteurs, $info['inf__date_echeance_secteur']) ?></select></td>
   </tr>
 
   <tr>

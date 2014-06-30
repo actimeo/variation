@@ -93,7 +93,7 @@ function on_ed_suppr_click () {
 <h1>Ressources</h1>
 <form method="get" action="<?= $_SERVER['REQUEST_URI'] ?>">
 <select name="sec_id">
-<option value="">(tous thèmes)</option>
+<option value="">(toutes thématiques)</option>
 <?php liste_secteurs ($_GET['sec_id']); ?>
 </select>
 <button type="submit">OK</button>
