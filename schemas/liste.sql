@@ -495,6 +495,20 @@ $$;
 COMMENT ON FUNCTION liste_liste_get(prm_token integer, prm_lis_id integer) IS
 'Retourne les informations d''une configuration de page liste.';
 
+CREATE OR REPLACE FUNCTION liste_liste_get_par_code(prm_token integer, prm_lis_code varchar) RETURNS liste
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+	ret liste.liste;
+BEGIN
+	PERFORM login._token_assert (prm_token, FALSE, FALSE);
+	SELECT * INTO ret FROM liste.liste WHERE lis_code = prm_lis_code;
+	RETURN ret;
+END;
+$$;
+COMMENT ON FUNCTION liste_liste_get_par_code(prm_token integer, prm_lis_code varchar) IS
+'Retourne les informations d''une configuration de page liste.';
+
 DROP FUNCTION IF EXISTS liste_liste_supprime(prm_lis_id integer);
 CREATE OR REPLACE FUNCTION liste_liste_supprime(prm_token integer, prm_lis_id integer) RETURNS void
     LANGUAGE plpgsql

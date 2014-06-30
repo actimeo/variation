@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portail>
+  <nom>Portail par défaut</nom>
+  <entite code="usager">
+    <nom>Usager</nom>
+    <menu>
+      <nom>Administration</nom>
+      <sousmenu type="" typeid="" modif="1" suppression="">
+	<nom>Etat civil</nom>
+	<icone>Images/IS_Real_vista_Flags/originals/png/NORMAL/32/France_32.png</icone>
+	<groupe>
+	  <nom>Etat civil</nom>
+	  <infos code="nom" groupecycle="" obligatoire="1"/>
+	  <infos code="prenom" groupecycle="" obligatoire="1"/>
+	  <infos code="sexe" groupecycle="" obligatoire=""/>
+	  <infos code="nationalite_actuelle" groupecycle="" obligatoire=""/>
+	  <infos code="date_naissance" groupecycle="" obligatoire=""/>
+	  <infos code="lieu_de_naissance" groupecycle="" obligatoire=""/>
+	  <infos code="famille" groupecycle="" obligatoire=""/>
+	</groupe>
+      </sousmenu>
+      <sousmenu type="" typeid="" modif="1" suppression="">
+	<nom>Prises en charges</nom>
+	<icone>Images/IS_Real_vista_Social/originals/png/NORMAL/32/join_32.png</icone>
+	<groupe>
+	  <nom>Prises en charge</nom>
+	  <infos code="groupe_prise_en_charge" groupecycle="1" obligatoire="1"/>
+	</groupe>
+      </sousmenu>
+      <sousmenu type="event" typeid="rendezvous_administration" modif="1" suppression="1">
+	<nom>Agenda</nom>
+	<icone>Images/IS_Real_vista_Accounting/originals/png/NORMAL/32/calendar_month_32.png</icone>
+      </sousmenu>
+      <sousmenu type="documents" typeid="documents_administration" modif="1" suppression="1">
+	<nom>Comptes-rendus et pièces jointes</nom>
+	<icone>Images/IS_real_vista_general/originals/png/NORMAL/32/clip_32.png</icone>
+      </sousmenu>
+      <sousmenu type="notes" typeid="admission_et_prise_en_charge" modif="" suppression="">
+	<nom>Notes</nom>
+	<icone>Images/IS_Real_vista_Communications/originals/png/NORMAL/32/always_on_top_32.png</icone>
+      </sousmenu>
+    </menu>
+    <menu>
+      <nom>Projet individuel</nom>
+      <sousmenu type="" typeid="" modif="1" suppression="">
+	<nom>Actualisation</nom>
+	<icone>Images/IS_real_vista_project_managment/png/NORMAL/32/goals_32.png</icone>
+	<groupe>
+	  <nom>Planning</nom>
+	  <infos code="date_prochain_projet" groupecycle="" obligatoire=""/>
+	  <infos code="date_projet" groupecycle="" obligatoire=""/>
+	</groupe>
+	<groupe>
+	  <nom>Projet</nom>
+	  <infos code="projet_objectifs" groupecycle="" obligatoire=""/>
+	  <infos code="projet_moyens" groupecycle="" obligatoire=""/>
+	</groupe>
+      </sousmenu>
+      <sousmenu type="event" typeid="rendezvous_projet" modif="1" suppression="1">
+	<nom>Agenda</nom>
+	<icone>Images/IS_Real_vista_Accounting/originals/png/NORMAL/32/calendar_month_32.png</icone>
+      </sousmenu>
+      <sousmenu type="documents" typeid="documents_projet_individuel" modif="1" suppression="1">
+	<nom>Comptes-rendus</nom>
+	<icone>Images/IS_real_vista_general/originals/png/NORMAL/32/clip_32.png</icone>
+      </sousmenu>
+      <sousmenu type="notes" typeid="projet_individuel" modif="" suppression="">
+	<nom>Notes</nom>
+	<icone>Images/IS_Real_vista_Communications/originals/png/NORMAL/32/always_on_top_32.png</icone>
+      </sousmenu>
+    </menu>
+    <menu>
+      <nom>Santé</nom>
+      <sousmenu type="" typeid="" modif="1" suppression="">
+	<nom>Couverture</nom>
+	<icone>Images/IS_Real_vista_Medical/originals/png/NORMAL/32/insurance_billing_32.png</icone>
+	<groupe>
+	  <nom>Couverture médicale</nom>
+	  <infos code="caisse_affiliation" groupecycle="" obligatoire=""/>
+	  <infos code="numero_securite_sociale" groupecycle="" obligatoire=""/>
+	</groupe>
+      </sousmenu>
+      <sousmenu type="event" typeid="rendezvous_administration" modif="1" suppression="1">
+	<nom>Agenda</nom>
+	<icone>Images/IS_Real_vista_Accounting/originals/png/NORMAL/32/calendar_month_32.png</icone>
+      </sousmenu>
+      <sousmenu type="documents" typeid="documents_suivi_medical" modif="1" suppression="1">
+	<nom>Comptes-rendus et pièces jointes</nom>
+	<icone>Images/IS_real_vista_general/originals/png/NORMAL/32/clip_32.png</icone>
+      </sousmenu>
+      <sousmenu type="notes" typeid="suivi_medical" modif="" suppression="">
+	<nom>Notes</nom>
+	<icone>Images/IS_Real_vista_Communications/originals/png/NORMAL/32/always_on_top_32.png</icone>
+      </sousmenu>
+    </menu>
+    <menu>
+      <nom>Scolarité</nom>
+      <sousmenu type="" typeid="" modif="1" suppression="">
+	<nom>Situation scolaire</nom>
+	<icone>Images/IS_Real_vista_Education_icons/originals/png/NORMAL/32/desk_32.png</icone>
+	<groupe>
+	  <nom>Contact</nom>
+	  <infos code="contact_pedagogie" groupecycle="" obligatoire=""/>
+	</groupe>
+	<groupe>
+	  <nom>Parcours</nom>
+	  <infos code="niveau_scolaire" groupecycle="" obligatoire=""/>
+	  <infos code="groupe_pedagogie" groupecycle="" obligatoire=""/>
+	  <infos code="notes_pedagogie" groupecycle="" obligatoire=""/>
+	</groupe>
+      </sousmenu>
+      <sousmenu type="event" typeid="" modif="1" suppression="1">
+	<nom>Agenda</nom>
+	<icone>Images/IS_Real_vista_Accounting/originals/png/NORMAL/32/calendar_month_32.png</icone>
+      </sousmenu>
+      <sousmenu type="documents" typeid="" modif="1" suppression="1">
+	<nom>Comptes-rendus</nom>
+	<icone>Images/IS_real_vista_general/originals/png/NORMAL/32/clip_32.png</icone>
+      </sousmenu>
+      <sousmenu type="notes" typeid="" modif="" suppression="">
+	<nom>Notes</nom>
+	<icone>Images/IS_Real_vista_Communications/originals/png/NORMAL/32/always_on_top_32.png</icone>
+      </sousmenu>
+    </menu>
+  </entite>
+  <entite code="personnel">
+    <nom>Personnel</nom>
+    <menu>
+      <nom>Profil</nom>
+      <sousmenu type="" typeid="" modif="1" suppression="">
+	<nom>Profil</nom>
+	<icone>Images/IS_Real_vista_Social/originals/png/NORMAL/32/guest_32.png</icone>
+	<groupe>
+	  <nom>Etat civil</nom>
+	  <infos code="nom" groupecycle="" obligatoire="1"/>
+	  <infos code="prenom" groupecycle="" obligatoire="1"/>
+	</groupe>
+	<groupe>
+	  <nom>Emploi</nom>
+	  <infos code="personnel_metier" groupecycle="" obligatoire="1"/>
+	</groupe>
+	<groupe>
+	  <nom>Coordonnées</nom>
+	  <infos code="adresse" groupecycle="" obligatoire=""/>
+	  <infos code="code_postal" groupecycle="" obligatoire=""/>
+	  <infos code="ville" groupecycle="" obligatoire=""/>
+	  <infos code="telephone_fixe" groupecycle="" obligatoire=""/>
+	  <infos code="telephone_mobile" groupecycle="" obligatoire=""/>
+	</groupe>
+      </sousmenu>
+    </menu>
+    <menu>
+      <nom>Agenda</nom>
+      <sousmenu type="event" typeid="tout_tout" modif="1" suppression="1">
+	<nom>Agenda</nom>
+	<icone>Images/IS_Real_vista_Accounting/originals/png/NORMAL/32/calendar_month_32.png</icone>
+      </sousmenu>
+    </menu>
+  </entite>
+  <entite code="contact">
+    <nom>Contact</nom>
+    <menu>
+      <nom>Profil</nom>
+      <sousmenu type="" typeid="" modif="1" suppression="">
+	<nom>Profil</nom>
+	<icone>Images/IS_real_vista_project_managment/png/NORMAL/32/offshore_32.png</icone>
+	<groupe>
+	  <nom>Etat civil</nom>
+	  <infos code="nom" groupecycle="" obligatoire="1"/>
+	  <infos code="prenom" groupecycle="" obligatoire="1"/>
+	</groupe>
+	<groupe>
+	  <nom>Métier</nom>
+	  <infos code="contact_metier" groupecycle="" obligatoire="1"/>
+	</groupe>
+      </sousmenu>
+    </menu>
+    <menu>
+      <nom>Coordonnées</nom>
+      <sousmenu type="" typeid="" modif="1" suppression="">
+	<nom>Coordonnées</nom>
+	<icone>Images/IS_Real_vista_Mail_icons/originals/png/NORMAL/32/inbox_32.png</icone>
+	<groupe>
+	  <nom>Coordonnées</nom>
+	  <infos code="adresse" groupecycle="" obligatoire=""/>
+	  <infos code="code_postal" groupecycle="" obligatoire=""/>
+	  <infos code="ville" groupecycle="" obligatoire=""/>
+	  <infos code="telephone_fixe" groupecycle="" obligatoire=""/>
+	  <infos code="telephone_mobile" groupecycle="" obligatoire=""/>
+	</groupe>
+      </sousmenu>
+    </menu>
+    <menu>
+      <nom>Agenda</nom>
+      <sousmenu type="event" typeid="tout_tout" modif="1" suppression="1">
+	<nom>Agenda</nom>
+	<icone>Images/IS_Real_vista_Accounting/originals/png/NORMAL/32/calendar_month_32.png</icone>
+      </sousmenu>
+    </menu>
+  </entite>
+  <entite code="famille">
+    <nom>Famille</nom>
+    <menu>
+      <nom>Etat civil</nom>
+      <sousmenu type="" typeid="" modif="1" suppression="">
+	<nom>Etat civil</nom>
+	<icone>Images/IS_Real_vista_Education_icons/originals/png/NORMAL/32/parent_coordinator_32.png</icone>
+	<groupe>
+	  <nom>Etat civil</nom>
+	  <infos code="nom" groupecycle="" obligatoire="1"/>
+	  <infos code="prenom" groupecycle="" obligatoire="1"/>
+	</groupe>
+      </sousmenu>
+    </menu>
+    <menu>
+      <nom>Coordonnées</nom>
+      <sousmenu type="" typeid="" modif="1" suppression="">
+	<nom>Coordonnées</nom>
+	<icone>Images/IS_Real_vista_Mail_icons/originals/png/NORMAL/32/inbox_32.png</icone>
+	<groupe>
+	  <nom>Coordonnées</nom>
+	  <infos code="adresse" groupecycle="" obligatoire=""/>
+	  <infos code="code_postal" groupecycle="" obligatoire=""/>
+	  <infos code="ville" groupecycle="" obligatoire=""/>
+	  <infos code="telephone_fixe" groupecycle="" obligatoire=""/>
+	  <infos code="telephone_mobile" groupecycle="" obligatoire=""/>
+	</groupe>
+      </sousmenu>
+    </menu>
+    <menu>
+      <nom>Agenda</nom>
+      <sousmenu type="event" typeid="tout_tout" modif="1" suppression="1">
+	<nom>Agenda</nom>
+	<icone>Images/IS_Real_vista_Accounting/originals/png/NORMAL/32/calendar_month_32.png</icone>
+      </sousmenu>
+    </menu>
+  </entite>
+  <topmenus>
+    <topmenu>
+      <nom>Administration</nom>
+      <topsousmenu modif="" suppression="">
+	<nom>Etats civils</nom>
+	<icone>Images/IS_Real_vista_Flags/originals/png/NORMAL/32/France_32.png</icone>
+	<type>liste</type>
+	<type_id>usagers_etats_civils</type_id>
+	<titre>Etats civils des usagers</titre>
+      </topsousmenu>
+      <topsousmenu modif="" suppression="">
+	<nom>Prises en charge</nom>
+	<icone>Images/IS_Real_vista_Social/originals/png/NORMAL/32/join_32.png</icone>
+	<type>liste</type>
+	<type_id>usagers_prises_en_charge</type_id>
+	<titre>Prises en charge</titre>
+      </topsousmenu>
+      <topsousmenu modif="1" suppression="1">
+	<nom>Agenda</nom>
+	<icone>Images/IS_Real_vista_Accounting/originals/png/NORMAL/32/calendar_month_32.png</icone>
+	<type>event</type>
+	<type_id>rendezvous_administration</type_id>
+	<titre>Agenda de suivi administratif</titre>
+      </topsousmenu>
+      <topsousmenu modif="1" suppression="1">
+	<nom>Comptes-rendus et pièces jointes</nom>
+	<icone>Images/IS_real_vista_general/originals/png/NORMAL/32/clip_32.png</icone>
+	<type>documents</type>
+	<type_id>documents_administration</type_id>
+	<titre>Comptes-rendus et pièces jointes</titre>
+      </topsousmenu>
+      <topsousmenu modif="" suppression="">
+	<nom>Notes</nom>
+	<icone>Images/IS_Real_vista_Communications/originals/png/NORMAL/32/always_on_top_32.png</icone>
+	<type>notes</type>
+	<type_id>admission_et_prise_en_charge</type_id>
+	<titre>Notes de suivi administratif</titre>
+      </topsousmenu>
+      <topsousmenu modif="" suppression="">
+	<nom>Répertoire du personnel</nom>
+	<icone>Images/IS_Real_vista_Business/originals/png/NORMAL/32/niche_32.png</icone>
+	<type>liste</type>
+	<type_id>personnel_repertoire</type_id>
+	<titre>Répertoire du personnel</titre>
+      </topsousmenu>
+      <topsousmenu modif="" suppression="">
+	<nom>Répertoire des partenaires</nom>
+	<icone>Images/IS_real_vista_project_managment/png/NORMAL/32/offshore_32.png</icone>
+	<type>liste</type>
+	<type_id>contacts_repertoire</type_id>
+	<titre>Répertoire des partenaires</titre>
+      </topsousmenu>
+      <topsousmenu modif="" suppression="">
+	<nom>Répertoire des membres familiaux</nom>
+	<icone>Images/IS_Real_vista_Education_icons/originals/png/NORMAL/32/parent_coordinator_32.png</icone>
+	<type>liste</type>
+	<type_id>famille_repertoire</type_id>
+	<titre>Répertoire des membres familiaux</titre>
+      </topsousmenu>
+    </topmenu>
+    <topmenu>
+      <nom>Projets individuels</nom>
+      <topsousmenu modif="" suppression="">
+	<nom>Actualisation</nom>
+	<icone>Images/IS_real_vista_project_managment/png/NORMAL/32/goals_32.png</icone>
+	<type>liste</type>
+	<type_id>usagers_projets_individuels</type_id>
+	<titre>Actualisation des projets</titre>
+      </topsousmenu>
+      <topsousmenu modif="1" suppression="1">
+	<nom>Agenda</nom>
+	<icone>Images/IS_Real_vista_Accounting/originals/png/NORMAL/32/calendar_month_32.png</icone>
+	<type>event</type>
+	<type_id>rendezvous_projet</type_id>
+	<titre>Agenda</titre>
+      </topsousmenu>
+      <topsousmenu modif="1" suppression="1">
+	<nom>Comptes-rendus</nom>
+	<icone>Images/IS_real_vista_general/originals/png/NORMAL/32/clip_32.png</icone>
+	<type>documents</type>
+	<type_id>documents_projet_individuel</type_id>
+	<titre>Comptes-rendus</titre>
+      </topsousmenu>
+      <topsousmenu modif="" suppression="">
+	<nom>Notes</nom>
+	<icone>Images/IS_Real_vista_Communications/originals/png/NORMAL/32/always_on_top_32.png</icone>
+	<type>notes</type>
+	<type_id>projet_individuel</type_id>
+	<titre>Notes</titre>
+      </topsousmenu>
+    </topmenu>
+    <topmenu>
+      <nom>Santé</nom>
+      <topsousmenu modif="" suppression="">
+	<nom>Couverture</nom>
+	<icone>Images/IS_Real_vista_Medical/originals/png/NORMAL/32/insurance_billing_32.png</icone>
+	<type>liste</type>
+	<type_id>usagers_couverture_medicale</type_id>
+	<titre>Couverture médicale</titre>
+      </topsousmenu>
+      <topsousmenu modif="1" suppression="1">
+	<nom>Agenda</nom>
+	<icone>Images/IS_Real_vista_Accounting/originals/png/NORMAL/32/calendar_month_32.png</icone>
+	<type>event</type>
+	<type_id>tout_sante</type_id>
+	<titre>Agenda de santé</titre>
+      </topsousmenu>
+      <topsousmenu modif="1" suppression="1">
+	<nom>Comptes-rendus et pièces jointes</nom>
+	<icone>Images/IS_real_vista_general/originals/png/NORMAL/32/clip_32.png</icone>
+	<type>documents</type>
+	<type_id>documents_suivi_medical</type_id>
+	<titre>Comptes-rendus et pièces jointes</titre>
+      </topsousmenu>
+      <topsousmenu modif="" suppression="">
+	<nom>Notes</nom>
+	<icone>Images/IS_Real_vista_Communications/originals/png/NORMAL/32/always_on_top_32.png</icone>
+	<type>notes</type>
+	<type_id>suivi_medical</type_id>
+	<titre>Notes de suivi de santé</titre>
+      </topsousmenu>
+    </topmenu>
+    <topmenu>
+      <nom>Scolarité</nom>
+      <topsousmenu modif="" suppression="">
+	<nom>Situations scolaires</nom>
+	<icone>Images/IS_Real_vista_Education_icons/originals/png/NORMAL/32/desk_32.png</icone>
+	<type>liste</type>
+	<type_id>usagers_scolarite</type_id>
+	<titre>Situation scolaire</titre>
+      </topsousmenu>
+      <topsousmenu modif="1" suppression="1">
+	<nom>Agenda</nom>
+	<icone>Images/IS_Real_vista_Accounting/originals/png/NORMAL/32/calendar_month_32.png</icone>
+	<type>event</type>
+	<type_id>tout_pedagogie</type_id>
+	<titre>Agenda</titre>
+      </topsousmenu>
+      <topsousmenu modif="1" suppression="1">
+	<nom>Comptes-rendus</nom>
+	<icone>Images/IS_real_vista_general/originals/png/NORMAL/32/clip_32.png</icone>
+	<type>documents</type>
+	<type_id/>
+	<titre>Comptes-rendus</titre>
+      </topsousmenu>
+      <topsousmenu modif="" suppression="">
+	<nom>Notes</nom>
+	<icone>Images/IS_Real_vista_Communications/originals/png/NORMAL/32/always_on_top_32.png</icone>
+	<type>notes</type>
+	<type_id/>
+	<titre>Notes</titre>
+      </topsousmenu>
+    </topmenu>
+  </topmenus>
+</portail>

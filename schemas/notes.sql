@@ -646,6 +646,24 @@ Entrées :
  - prm_nos_id : Identifiant de la configuration de la page de notes.
 ';
 
+CREATE OR REPLACE FUNCTION notes_notes_get_par_code(prm_token integer, prm_nos_code varchar) RETURNS notes
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+	ret notes.notes;
+BEGIN
+	PERFORM login._token_assert (prm_token, FALSE, FALSE);
+	SELECT * INTO ret FROM notes.notes WHERE nos_code = prm_nos_code;
+	RETURN ret;
+END;
+$$;
+COMMENT ON FUNCTION notes_notes_get_par_code(prm_token integer, prm_nos_code varchar) IS
+'Retourne les informations sur la configuration d''une page de notes.
+Entrées :
+ - prm_token : Token d''authentification
+ - prm_nos_code : Code de la configuration de la page de notes.
+';
+
 DROP FUNCTION IF EXISTS notes_notes_liste();
 CREATE OR REPLACE FUNCTION notes_notes_liste(prm_token integer) RETURNS SETOF notes
     LANGUAGE plpgsql

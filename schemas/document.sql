@@ -862,6 +862,23 @@ Entrées :
  - prm_token : Token d''authentification
  - prm_dos_id : Identifiant de la configuration de page de documents';
 
+CREATE OR REPLACE FUNCTION document_documents_get_par_code(prm_token integer, prm_dos_code varchar) RETURNS documents
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+	ret document.documents;
+BEGIN
+	PERFORM login._token_assert (prm_token, FALSE, FALSE);
+	SELECT * INTO ret FROM document.documents WHERE dos_code = prm_dos_code;
+	RETURN ret;
+END;
+$$;
+COMMENT ON FUNCTION document_documents_get_par_code(prm_token integer, prm_dos_code varchar) IS
+'Retourne les informations de configuration d''une page de documents.
+Entrées :
+ - prm_token : Token d''authentification
+ - prm_dos_code : Code de la configuration de page de documents';
+
 
 DROP FUNCTION IF EXISTS document_documents_liste();
 CREATE OR REPLACE FUNCTION document_documents_liste(prm_token integer) RETURNS SETOF documents

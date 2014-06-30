@@ -736,7 +736,8 @@ DROP FUNCTION IF EXISTS meta_info_groupe_add_end(prm_inf_code character varying,
 -- $$;
 
 DROP FUNCTION IF EXISTS meta_info_groupe_add_end(prm_inf_code character varying, prm_gin_id integer, prm__groupe_cycle boolean);
-CREATE OR REPLACE FUNCTION meta_info_groupe_add_end(prm_token integer, prm_inf_code character varying, prm_gin_id integer, prm__groupe_cycle boolean) RETURNS integer
+DROP FUNCTION IF EXISTS meta_info_groupe_add_end(prm_token integer, prm_inf_code character varying, prm_gin_id integer, prm__groupe_cycle boolean);
+CREATE OR REPLACE FUNCTION meta_info_groupe_add_end(prm_token integer, prm_inf_code character varying, prm_gin_id integer, prm__groupe_cycle boolean, prm_obligatoire boolean) RETURNS integer
     LANGUAGE plpgsql
     AS $$
 DECLARE
@@ -747,13 +748,13 @@ BEGIN
 	PERFORM login._token_assert_interface (prm_token);
 	SELECT MAX(ing_ordre) + 1 INTO int_ordre FROM meta.info_groupe WHERE gin_id = prm_gin_id;
 	IF int_ordre ISNULL THEN int_ordre = 0; END IF;
-	INSERT INTO meta.info_groupe (inf_id, gin_id, ing_ordre, ing__groupe_cycle) VALUES 
-		((SELECT inf_id FROM meta.info WHERE inf_code = prm_inf_code), prm_gin_id, int_ordre, prm__groupe_cycle)
+	INSERT INTO meta.info_groupe (inf_id, gin_id, ing_ordre, ing__groupe_cycle, ing_obligatoire) VALUES 
+		((SELECT inf_id FROM meta.info WHERE inf_code = prm_inf_code), prm_gin_id, int_ordre, prm__groupe_cycle, prm_obligatoire)
 		RETURNING ing_id INTO ret;
 	RETURN ret;
 END;
 $$;
-COMMENT ON FUNCTION meta_info_groupe_add_end(prm_token integer, prm_inf_code character varying, prm_gin_id integer, prm__groupe_cycle boolean) IS
+COMMENT ON FUNCTION meta_info_groupe_add_end(prm_token integer, prm_inf_code character varying, prm_gin_id integer, prm__groupe_cycle boolean, prm_obligatoire boolean) IS
 'Ajoute un champ à un groupe de champs, en le plaçant à la fin.';
 
 DROP FUNCTION IF EXISTS meta_info_groupe_delete(prm_ing_id integer);
