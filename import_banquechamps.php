@@ -37,14 +37,20 @@ Copyright (c) 2014 Kavarna SARL
 <?php
 require 'inc/config.inc.php';
 $d = file_get_contents ($banquechamps.'/dir');
+if ($d === FALSE)
+  exit (1);
 $dirs = json_decode ($d);
 affiche_dirs ($dirs);
 
 $s = file_get_contents ($banquechamps.'/selection');
+if ($s === FALSE)
+  exit (1);
 $sels = json_decode ($s);
 affiche_selections ($sels);
 
 $c = file_get_contents($banquechamps.'/champs');
+if ($c === FALSE)
+  exit (1);
 $chas = json_decode ($c);
 affiche_champs ($chas);
 
@@ -67,6 +73,8 @@ function affiche_selections ($sels) {
     echo 'INSERT INTO meta.selection (sel_id, sel_code, sel_libelle, sel_info) VALUES ('.pg_escape_string ($sel->sel_id).', \''.pg_escape_string ($sel->sel_code).'\', \''.pg_escape_string ($sel->sel_libelle).'\', \''.pg_escape_string ($sel->sel_info).'\');'."\n";    
     
     $s = file_get_contents ($banquechamps.'/selection/'.$sel->sel_code.'/entree');
+    if ($s === FALSE)
+      exit (1);
     $sens = json_decode ($s);
     affiche_selection_entrees ($sens);
   }
