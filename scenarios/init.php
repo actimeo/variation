@@ -90,6 +90,8 @@ $per_id = $base->personne_ajoute ($token, 'usager');
 $base->personne_info_varchar_set ($token, $per_id, 'nom', 'DURAND', $uti_id_variation);
 $base->personne_info_varchar_set ($token, $per_id, 'prenom', 'Pierre', $uti_id_variation);
 
+$base->personne_groupe_ajoute ($token, $per_id, $grp_id, '01/01/2104', NULL, NULL, 
+			       2 /* accepté */, NULL, NULL, NULL, NULL);
 /* Ajout d'un employé */
 $per_id = $base->personne_ajoute ($token, 'personnel');
 $base->personne_info_varchar_set ($token, $per_id, 'nom', 'Administrateur', $uti_id_variation);
