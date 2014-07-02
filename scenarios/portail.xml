@@ -93,35 +93,6 @@
 	<icone>Images/IS_Real_vista_Communications/originals/png/NORMAL/32/always_on_top_32.png</icone>
       </sousmenu>
     </menu>
-    <menu>
-      <nom>Scolarité</nom>
-      <sousmenu type="" typeid="" modif="1" suppression="">
-	<nom>Situation scolaire</nom>
-	<icone>Images/IS_Real_vista_Education_icons/originals/png/NORMAL/32/desk_32.png</icone>
-	<groupe>
-	  <nom>Contact</nom>
-	  <infos code="contact_pedagogie" groupecycle="" obligatoire=""/>
-	</groupe>
-	<groupe>
-	  <nom>Parcours</nom>
-	  <infos code="niveau_scolaire" groupecycle="" obligatoire=""/>
-	  <infos code="groupe_pedagogie" groupecycle="" obligatoire=""/>
-	  <infos code="notes_pedagogie" groupecycle="" obligatoire=""/>
-	</groupe>
-      </sousmenu>
-      <sousmenu type="event" typeid="" modif="1" suppression="1">
-	<nom>Agenda</nom>
-	<icone>Images/IS_Real_vista_Accounting/originals/png/NORMAL/32/calendar_month_32.png</icone>
-      </sousmenu>
-      <sousmenu type="documents" typeid="" modif="1" suppression="1">
-	<nom>Comptes-rendus</nom>
-	<icone>Images/IS_real_vista_general/originals/png/NORMAL/32/clip_32.png</icone>
-      </sousmenu>
-      <sousmenu type="notes" typeid="" modif="" suppression="">
-	<nom>Notes</nom>
-	<icone>Images/IS_Real_vista_Communications/originals/png/NORMAL/32/always_on_top_32.png</icone>
-      </sousmenu>
-    </menu>
   </entite>
   <entite code="personnel">
     <nom>Personnel</nom>
@@ -355,37 +326,6 @@
 	<type>notes</type>
 	<type_id>suivi_medical</type_id>
 	<titre>Notes de suivi de santé</titre>
-      </topsousmenu>
-    </topmenu>
-    <topmenu>
-      <nom>Scolarité</nom>
-      <topsousmenu modif="" suppression="">
-	<nom>Situations scolaires</nom>
-	<icone>Images/IS_Real_vista_Education_icons/originals/png/NORMAL/32/desk_32.png</icone>
-	<type>liste</type>
-	<type_id>usagers_scolarite</type_id>
-	<titre>Situation scolaire</titre>
-      </topsousmenu>
-      <topsousmenu modif="1" suppression="1">
-	<nom>Agenda</nom>
-	<icone>Images/IS_Real_vista_Accounting/originals/png/NORMAL/32/calendar_month_32.png</icone>
-	<type>event</type>
-	<type_id>tout_pedagogie</type_id>
-	<titre>Agenda</titre>
-      </topsousmenu>
-      <topsousmenu modif="1" suppression="1">
-	<nom>Comptes-rendus</nom>
-	<icone>Images/IS_real_vista_general/originals/png/NORMAL/32/clip_32.png</icone>
-	<type>documents</type>
-	<type_id/>
-	<titre>Comptes-rendus</titre>
-      </topsousmenu>
-      <topsousmenu modif="" suppression="">
-	<nom>Notes</nom>
-	<icone>Images/IS_Real_vista_Communications/originals/png/NORMAL/32/always_on_top_32.png</icone>
-	<type>notes</type>
-	<type_id/>
-	<titre>Notes</titre>
       </topsousmenu>
     </topmenu>
   </topmenus>
