@@ -305,33 +305,4 @@
       </champ>
     </champs>
   </liste>
-  <liste>
-    <code>usagers_scolarite</code>
-    <nom>USAGERS Scolarit&#xE9;</nom>
-    <entite>usager</entite>
-    <inverse>false</inverse>
-    <pagination_tout>false</pagination_tout>
-    <champs>
-      <champ>
-        <inf_code>nom</inf_code>
-        <libelle/>
-        <filtrer>false</filtrer>
-        <verrouiller>false</verrouiller>
-      </champ>
-      <champ>
-        <inf_code>prenom</inf_code>
-        <libelle/>
-        <filtrer>false</filtrer>
-        <verrouiller>false</verrouiller>
-      </champ>
-      <champ>
-        <inf_code>contact_pedagogie</inf_code>
-        <libelle/>
-        <filtrer>false</filtrer>
-        <verrouiller>false</verrouiller>
-        <contact_filtre_utilisateur>false</contact_filtre_utilisateur>
-        <champs_supp>false</champs_supp>
-      </champ>
-    </champs>
-  </liste>
 </listes>
