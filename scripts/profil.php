@@ -74,6 +74,9 @@ if ($ok) {
   #erreur { text-align: center; margin-top: 10px; color: red; }
   #ok { text-align: center; margin-top: 10px; color: green; }
 </style>
+  <?php if ($mode_demo === true) { ?>
+<p>Modification du mot de passe non disponible en mode demo.</p>
+  <?php } else { ?>
 <form method="POST" action="/?profil">
   <fieldset><legend> Modifier mon mot de passe </legend>
     <label for="ancien_mdp">Ancien mot de passe : </label>
@@ -91,3 +94,4 @@ if ($ok) {
     </div>
   </fieldset>
 </form>
+     <?php } ?>
