@@ -196,10 +196,36 @@ function affiche_entete () {
   echo '</div>'; 
   echo '<div class="details">';
   echo '<h1>'.$nom.' '.$prenom.' ('.$entite['ent_libelle'].')</h1>';  
+  echo '<div class="listinfos">';
   echo preg_replace_callback ('/\[.[^\]]*\]/', 'remplace_tags', $format_entete);
+  echo '</div>';
+  if ($ent_code == 'usager') {
+    affiche_etats ();
+  }
   echo '</div>';
   echo '</div>';
   echo '<div style="clear: both"></div>';
+}
+
+function affiche_etats () {
+  global $per_id;
+  $d = dir ('etats/');
+  $entries = array ();
+  while (false !== ($entry = $d->read ())) {
+    if (substr ($entry, -4) == '.pdf') {
+      $entries[] = $entry;
+    }
+  }
+  if (count ($entries)) {
+    echo '<div class="listetats">';
+    echo '<ul>';
+    sort ($entries);
+    foreach ($entries as $entry) {
+      echo '<li><a href="/export/etat.php?pdf='.rawurlencode ($entry).'&amp;id='.$per_id.'">'.preg_replace ('/\.pdf$/', '', $entry).'</a></li>';
+    }
+    echo '</ul>';
+    echo '</div>';
+  }
 }
 
 // Affiche menu et sous-menus

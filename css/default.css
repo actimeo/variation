@@ -52,6 +52,28 @@ h1 {
     margin-left: 150px;
 }
 
+.entete .listinfos {
+    float: left;
+}
+
+.entete .listetats {
+    float: right;
+    width: 300px;
+}
+
+.entete .listetats ul {
+    margin: 0;
+    padding: 0;
+}
+
+.entete .listetats li {
+    margin: 0; 
+    padding: 0;
+  width: 300px;
+  text-align: right;
+  list-style-type: none;
+}
+
 h2 {
     margin: 5px;
     padding: 0;

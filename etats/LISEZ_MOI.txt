@@ -1,0 +1,11 @@
+Etats
+=====
+
+Placer dans ce répertoire des formulaires PDF qui seront affichés 
+automatiquement dans l'entête des usagers et dont les champs seront 
+remplis automatiquement avec les données de l'usager.
+
+Le nom du fichier doit se terminer par .pdf (attention à la casse).
+
+Voir la manuel Administrateur (Tome II) pour plus d'informations
+sur la création des formulaires PDF.
