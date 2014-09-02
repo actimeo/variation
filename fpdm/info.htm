@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Remplissage de formulaire</title>
+<style type="text/css">
+body {font-family:"Times New Roman",serif}
+h1 {font:bold 135% Arial,sans-serif; color:#4000A0; margin-bottom:0.9em}
+h2 {font:bold 95% Arial,sans-serif; color:#900000; margin-top:1.5em; margin-bottom:1em}
+</style>
+</head>
+<body>
+<h1>Remplissage de formulaire</h1>
+<h2>Informations</h2>
+Auteur : Olivier<br>
+Licence : FPDF
+<h2>Description</h2>
+Ce script permet de fusionner des données dans un formulaire PDF. En partant d'un modèle
+contenant des champs textes, il est possible d'injecter les valeurs de deux manières différentes :
+<ul style="margin-left:1.5em; padding:0">
+<li>à partir d'un tableau PHP</li>
+<li>à partir d'un fichier <abbr title="Forms Data Format">FDF</abbr></li>
+</ul>
+Le document final est renvoyé par la méthode Output(), identique à celle de FPDF.<br>
+<br>
+Remarque : si votre PDF modèle n'est pas compatible avec le script, vous pouvez le retraiter avec
+<a href="http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/" target="_blank">pdftk</a> de cette manière :
+<p><kbd>pdftk modele.pdf output modele2.pdf</kbd></p>
+Et réessayez avec modele2.pdf.
+</body>
+</html>
