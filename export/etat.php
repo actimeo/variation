@@ -67,8 +67,15 @@ foreach ($lines as $name => $line) {
 
   case 'variable':
     switch ($parts[1]) {
+
     case 'date_jour':
       $valeur = date ('d/m/Y');
+      break;
+      
+    case 'vide':
+      $valeur = '';
+      break;
+
     }
   }
   
