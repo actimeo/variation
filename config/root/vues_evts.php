@@ -40,7 +40,7 @@ include ("inc/pagination.php");
 if (!$_SESSION['uti_root'])
   exit;
 
-$secteurs = $base->meta_secteur_liste ($_SESSION['token'], NULL);
+$secteurs = $base->etablissement_secteur_liste ($_SESSION['token'], $_SESSION['eta_id'], NULL);
 $ecas = $base->events_events_categorie_list ($_SESSION['token']);
 
 $pagination = new Pagination ($base);
