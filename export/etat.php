@@ -39,8 +39,8 @@ require ('../inc/config.inc.php');
 require ('../inc/common.inc.php');
 require ('../inc/pgprocedures.class.php');
 require ('../fpdm/fpdm.php');
-
 $base = new PgProcedures ($pghost, $pguser, $pgpass, $pgbase);
+require ('../inc/infos/info.class.php');
 
 $pdfname = $_GET['pdf'];
 $token = $_SESSION['token'];
@@ -116,8 +116,8 @@ function valeur_champ ($per_id, $inf_code) {
     break;
 
   case 'date_calcule':
-    $calc = preg_replace_callback ('/\[.*?\]/', replace_date_calcule_callback, $inf['inf_formule']);
-    $valeur = date ('d/m/Y', strtotime ($calc));
+    $obj = new Info_date_calcule ($inf);
+    $valeur = $obj->valeurCalculee ($per_id);
     break;
     
   case 'coche':
@@ -205,13 +205,4 @@ function valeur_champ ($per_id, $inf_code) {
   return $valeur;
 }
 
-function replace_date_calcule_callback ($match) {
-  global $base, $per_id;
-  $code = substr ($match[0], 1, -1);
-  // On considère que c'est un champ date non multiple
-  $base->set_date_return_format ('Y-m-d');
-  $inf = $base->personne_info_date_get ($_SESSION['token'], $per_id, $code);
-  $base->set_date_return_format ('d/m/Y');
-  return $inf;
-}
 ?>

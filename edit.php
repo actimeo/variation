@@ -41,6 +41,7 @@ require ('inc/localise.inc.php');
 require ('inc/enums.inc.php');
 require ('inc/pgprocedures.class.php');
 $base = new PgProcedures ($pghost, $pguser, $pgpass, $pgbase);
+require ('inc/infos/info.class.php');
 
 if (isset ($_GET['ent'])) {
   $ent_code = $_GET['ent'];
@@ -716,18 +717,9 @@ function affiche_info_statut_usager ($info) {
 }
 
 function affiche_info_date_calcule ($info) {
-  $calc = preg_replace_callback ('/\[.*?\]/', replace_date_calcule_callback, $info['inf_formule']);
-  echo date ('d/m/Y', strtotime ($calc));
-}
-
-function replace_date_calcule_callback ($match) {
-  global $base, $per_id;
-  $code = substr ($match[0], 1, -1);
-  // On considère que c'est un champ date non multiple
-  $base->set_date_return_format ('Y-m-d');
-  $inf = $base->personne_info_date_get ($_SESSION['token'], $per_id, $code);
-  $base->set_date_return_format ('d/m/Y');
-  return $inf;
+  global $per_id;
+  $obj = new Info_date_calcule ($info);
+  echo $obj->valeurCalculee ($per_id);
 }
 
 require ('inc/main.inc.php');
