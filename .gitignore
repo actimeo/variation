@@ -1,5 +1,6 @@
 banquechamps/.htaccess
 banquechamps/ajax/.htaccess
 banquechamps/inc/config.inc.php
+banquechamps/inc/config.sh
 inc/config.inc.php
 inc/config.sh

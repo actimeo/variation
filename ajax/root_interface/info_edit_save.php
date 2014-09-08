@@ -108,5 +108,11 @@ switch ($thetypes[$_POST['int_id']]['int_code']) {
 				   $_POST['inf__date_echeance_secteur']
 				   );
     break;
+  case 'date_calcule':
+    $base->meta_infos_formule_update ($_SESSION['token'],
+				      $inf_id,
+				      $_POST['inf_formule']				      
+				      );
+    break;
 }
 ?>

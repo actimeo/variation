@@ -136,6 +136,7 @@ function on_inf_enregistrer_click () {
 	inf__date_echeance_icone: $("#inf__date_echeance_icone").val(),
 	inf__date_echeance_secteur: $("#inf__date_echeance_secteur").val(),
 	inf__etablissement_secteur: $("#inf__etablissement_secteur").val(),
+	inf_formule: $("#inf_formule").val(),
 	dirid: $("#dirid").val()
     }, function (data) {
 	if (data == 'ERR') {
@@ -218,6 +219,11 @@ function on_inf__date_echeance_click () {
       <input type="checkbox" disabled id="inf_multiple" <?= $info['inf_multiple'] ? "checked" :"" ?>></input><label for="inf_multiple">Multiple</label>
     </td>
   </tr>
+
+  <tr class="champ_type type_<?= $thetypes['date_calcule']['int_id'] ?>">
+    <td>Formule&nbsp;:</td><td><input type="text" size="50" id="inf_formule" value="<?= $info['inf_formule'] ?>"></input></td>
+  </tr>
+
   <tr class="champ_type type_<?= $thetypes['textelong']['int_id'] ?>">
     <td>Nb lignes&nbsp;:</td><td><input type="text" size="3" id="inf__textelong_nblignes" value="<?= $info['inf__textelong_nblignes'] ?>"></input></td>
   </tr>

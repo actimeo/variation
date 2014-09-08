@@ -391,6 +391,7 @@ function affiche_info ($info) {
   case 'affectation':     affiche_info_affectation ($info); break;
   case 'famille':         affiche_info_famille ($info); break;
   case 'statut_usager':   affiche_info_statut_usager ($info); break;
+  case 'date_calcule':    affiche_info_date_calcule ($info); break;
   }
 
   /* Affiche l'historique */
@@ -712,6 +713,21 @@ function affiche_info_statut_usager ($info) {
   global $base, $per_id, $statuts_usager;
   $valeur = $base->personne_info_integer_get ($_SESSION['token'], $per_id, $info['inf_code']);
   echo $statuts_usager[$valeur];
+}
+
+function affiche_info_date_calcule ($info) {
+  $calc = preg_replace_callback ('/\[.*?\]/', replace_date_calcule_callback, $info['inf_formule']);
+  echo date ('d/m/Y', strtotime ($calc));
+}
+
+function replace_date_calcule_callback ($match) {
+  global $base, $per_id;
+  $code = substr ($match[0], 1, -1);
+  // On considère que c'est un champ date non multiple
+  $base->set_date_return_format ('Y-m-d');
+  $inf = $base->personne_info_date_get ($_SESSION['token'], $per_id, $code);
+  $base->set_date_return_format ('d/m/Y');
+  return $inf;
 }
 
 require ('inc/main.inc.php');

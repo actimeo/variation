@@ -84,7 +84,13 @@ CREATE TYPE meta_info_groupe_liste AS (
 	inf__contact_secteur character varying,
 	inf__etablissement_interne boolean,
 	din_id integer,
-	inf__groupe_soustype integer
+	inf__groupe_soustype integer,
+    	inf_libelle_complet character varying,
+    	inf__date_echeance boolean,
+    	inf__date_echeance_icone character varying,
+    	inf__date_echeance_secteur character varying,
+    	inf__etablissement_secteur character varying,
+	inf_formule text
 );
 
 CREATE OR REPLACE FUNCTION meta_info_groupe_liste(prm_token integer, prm_gin_id integer) RETURNS SETOF meta_info_groupe_liste
@@ -653,6 +659,19 @@ END;
 $$;
 COMMENT ON FUNCTION meta_info_get(prm_token integer, prm_inf_id integer) IS
 'Retourne les informations sur un champ.';
+
+DROP FUNCTION IF EXISTS meta.meta_infos_formule_update(prm_inf_id integer, prm_formule text);
+CREATE OR REPLACE FUNCTION meta_infos_formule_update(prm_token integer, prm_inf_id integer, prm_formule text)
+RETURNS void
+LANGUAGE plpgsql
+AS $$
+BEGIN
+  PERFORM login._token_assert (prm_token, FALSE, FALSE);
+  UPDATE meta.info SET 
+    inf_formule = prm_formule
+    WHERE inf_id = prm_inf_id;
+END;
+$$;
 
 DROP FUNCTION IF EXISTS meta_info_get_par_code(prm_inf_code character varying);
 CREATE OR REPLACE FUNCTION meta_info_get_par_code(prm_token integer, prm_inf_code character varying) RETURNS info

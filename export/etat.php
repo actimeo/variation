@@ -114,6 +114,11 @@ function valeur_champ ($per_id, $inf_code) {
     }
     $valeur = implode (', ', $valeurs);
     break;
+
+  case 'date_calcule':
+    $calc = preg_replace_callback ('/\[.*?\]/', replace_date_calcule_callback, $inf['inf_formule']);
+    $valeur = date ('d/m/Y', strtotime ($calc));
+    break;
     
   case 'coche':
     $val = $base->personne_info_boolean_get ($token, $per_id, $inf['inf_code']);
@@ -198,5 +203,15 @@ function valeur_champ ($per_id, $inf_code) {
   }  
 
   return $valeur;
+}
+
+function replace_date_calcule_callback ($match) {
+  global $base, $per_id;
+  $code = substr ($match[0], 1, -1);
+  // On considère que c'est un champ date non multiple
+  $base->set_date_return_format ('Y-m-d');
+  $inf = $base->personne_info_date_get ($_SESSION['token'], $per_id, $code);
+  $base->set_date_return_format ('d/m/Y');
+  return $inf;
 }
 ?>
