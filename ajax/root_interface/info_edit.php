@@ -220,7 +220,7 @@ function on_inf__date_echeance_click () {
     </td>
   </tr>
 
-  <tr class="champ_type type_<?= $thetypes['date_calcule']['int_id'] ?>">
+  <tr class="champ_type type_<?= $thetypes['date_calcule']['int_id'] ?> type_<?= $thetypes['coche_calcule']['int_id'] ?>">
     <td>Formule&nbsp;:</td><td><input type="text" size="50" id="inf_formule" value="<?= $info['inf_formule'] ?>"></input></td>
   </tr>
 

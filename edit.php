@@ -393,6 +393,7 @@ function affiche_info ($info) {
   case 'famille':         affiche_info_famille ($info); break;
   case 'statut_usager':   affiche_info_statut_usager ($info); break;
   case 'date_calcule':    affiche_info_date_calcule ($info); break;
+  case 'coche_calcule':    affiche_info_coche_calcule ($info); break;
   }
 
   /* Affiche l'historique */
@@ -720,6 +721,13 @@ function affiche_info_date_calcule ($info) {
   global $per_id;
   $obj = new Info_date_calcule ($info);
   echo $obj->valeurCalculee ($per_id);
+}
+
+function affiche_info_coche_calcule ($info) {
+  global $per_id;
+  $obj = new Info_coche_calcule ($info);
+  $res = $obj->valeurCalculee ($per_id);
+  echo '<input type="checkbox" disabled'.($res ? ' checked' : '').'></input>';
 }
 
 require ('inc/main.inc.php');

@@ -109,6 +109,7 @@ switch ($thetypes[$_POST['int_id']]['int_code']) {
 				   );
     break;
   case 'date_calcule':
+  case 'coche_calcule':
     $base->meta_infos_formule_update ($_SESSION['token'],
 				      $inf_id,
 				      $_POST['inf_formule']				      
