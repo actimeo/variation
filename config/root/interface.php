@@ -136,12 +136,22 @@ $(document).ready (function () {
 			"image": "/Images/icons/jstree_type_date.png"
 		    }
 		},
+		"champ_date_calcule": {
+		    "icon": {
+			"image": "/Images/icons/jstree_type_date.png"
+		    }
+		},
 		"champ_textelong": {
 		    "icon": {
 			"image": "/Images/icons/jstree_type_textarea.png"
 		    }
 		},
 		"champ_coche": {
+		    "icon": {
+			"image": "/Images/icons/jstree_type_checkbox.jpg"
+		    }
+		},
+		"champ_coche_calcule": {
 		    "icon": {
 			"image": "/Images/icons/jstree_type_checkbox.jpg"
 		    }

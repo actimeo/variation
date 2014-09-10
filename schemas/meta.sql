@@ -573,16 +573,18 @@ DROP FUNCTION IF EXISTS meta_info_add(prm_int_id integer, prm_code character var
 -- $$;
 
 DROP FUNCTION IF EXISTS meta_info_add(prm_int_id integer, prm_code character varying, prm_libelle character varying, prm_libelle_complet character varying, prm_etendu boolean, prm_historique boolean, prm_multiple boolean);
--- CREATE OR REPLACE FUNCTION meta_info_add(prm_int_id integer, prm_code character varying, prm_libelle character varying, prm_libelle_complet character varying, prm_etendu boolean, prm_historique boolean, prm_multiple boolean) RETURNS integer
---     LANGUAGE plpgsql
---     AS $$
--- DECLARE
--- 	ret integer;
--- BEGIN
--- 	INSERT INTO meta.info(int_id, inf_code, inf_libelle, inf_libelle_complet, inf_etendu, inf_historique, inf_multiple) VALUES (prm_int_id, prm_code, prm_libelle, prm_libelle_complet, prm_etendu, prm_historique, prm_multiple) RETURNING inf_id INTO ret;
--- 	RETURN ret;
--- END;
--- $$;
+CREATE OR REPLACE FUNCTION meta_info_add(prm_token integer, prm_int_id integer, prm_code character varying, prm_libelle character varying, prm_libelle_complet character varying, prm_etendu boolean, prm_historique boolean, prm_multiple boolean) RETURNS integer
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+	ret integer;
+BEGIN
+	PERFORM login._token_assert (prm_token, FALSE, FALSE);
+	PERFORM login._token_assert_interface (prm_token);
+	INSERT INTO meta.info(int_id, inf_code, inf_libelle, inf_libelle_complet, inf_etendu, inf_historique, inf_multiple) VALUES (prm_int_id, prm_code, prm_libelle, prm_libelle_complet, prm_etendu, prm_historique, prm_multiple) RETURNING inf_id INTO ret;
+	RETURN ret;
+END;
+$$;
 
 DROP FUNCTION IF EXISTS meta_info_add_avec_id(prm_inf_id integer, prm_int_id integer, prm_code character varying, prm_libelle character varying, prm__textelong_nblignes integer, prm__selection_code integer, prm_etendu boolean, prm_historique boolean, prm_multiple boolean, prm__groupe_type character varying, prm__contact_filtre character varying, prm__metier_secteur character varying, prm__contact_secteur character varying, prm__etablissement_interne boolean, prm_din_id integer,   prm__groupe_soustype integer, prm_libelle_complet character varying, prm__date_echeance boolean, prm__date_echeance_icone character varying, prm__date_echeance_secteur character varying, prm__etablissement_secteur character varying);
 CREATE OR REPLACE FUNCTION meta_info_add_avec_id(prm_token integer, prm_inf_id integer, prm_int_id integer, prm_code character varying, prm_libelle character varying, prm__textelong_nblignes integer, prm__selection_code integer, prm_etendu boolean, prm_historique boolean, prm_multiple boolean, prm__groupe_type character varying, prm__contact_filtre character varying, prm__metier_secteur character varying, prm__contact_secteur character varying, prm__etablissement_interne boolean, prm_din_id integer,   prm__groupe_soustype integer, prm_libelle_complet character varying, prm__date_echeance boolean, prm__date_echeance_icone character varying, prm__date_echeance_secteur character varying, prm__etablissement_secteur character varying) RETURNS integer

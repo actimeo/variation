@@ -55,6 +55,20 @@ if ($_POST['inf_id'] != 0) {
 			   $_POST['inf_historique'] == 'checked',
 			   $_POST['inf_multiple'] == 'checked');
   $inf_id = $_POST['inf_id'];
+} else {
+  $inf_id = $base->meta_info_add ($_SESSION['token'],
+				  $_POST['int_id'],
+				  $_POST['inf_code'],
+				  $_POST['inf_libelle'],
+				  $_POST['inf_libelle_complet'],
+				  $_POST['inf_etendu'] == 'checked',
+				  $_POST['inf_historique'] == 'checked',
+				  $_POST['inf_multiple'] == 'checked');
+  if (!$inf_id) {
+    echo 'ERR';
+    exit;
+  }
+  $base->meta_info_move ($_SESSION['token'], $inf_id, substr ($_POST['dirid'], 4));
 }
 
 $base->meta_info_aide_set ($_SESSION['token'], $inf_id, $_POST['ina_aide']);
