@@ -113,7 +113,6 @@ $(document).ready (function () {
 
     $("#listechamps_rechercher").change (on_listechamps_rechercher_change);
     $("#listechamps_usedonly").change (on_listechamps_usedonly_change);
-    $("#listechamps_update").click (on_listechamps_update_click);
     $("#listechamps").jstree ({
 	"json_data": {
 	    "ajax": {
@@ -1366,20 +1365,110 @@ function getCol3Items (node) {
     }
     if (type.substring (0, 6) != 'champ_' && type != 'nonclasse') {
 
+      items.ajout = {
+	"label": "Ajouter sous-dossier",
+	"action": function () {
+	  var din = node.attr('id');
+	  var nom = prompt ('Nom du dossier');
+	  if (nom) {
+	    $.post('/ajax/root_interface/din_nouveau.php', { din: din, nom: nom }, function () {
+		$('#listechamps').jstree('refresh', -1);
+	      });
+	  }
+	}
+      };
+      items.ajout_champ = {
+	"label": "Ajouter champ",
+	"action": function () {
+	  info_ajoute (node.attr('id'));
+	}
+      }
+      
+      if (node.attr('id') != 'din_0') {
+	items.renommer = {
+	  "label": "Renommer",
+	  "action": function () {
+	    var din = node.attr('id');
+	    var nom = prompt ("Noveau nom du dossier", $("#listechamps").jstree ('get_text', '#'+node.attr('id')));
+	    if (nom != null) {
+	      $.post("/ajax/root_interface/din_update.php", {din: din, nom: nom}, function () {
+		  $('#listechamps').jstree('refresh', -1);                        
+		});
+	    }
+	  }
+	}
+
+	items.couper_dossier = {
+	  "label": "Couper",
+	  "action": function () {
+	    colle_din_id = node.attr('id');
+	    colle_inf_id = null;
+	  }
+	}
+
+	items.supprimer = {
+	  "label": "Supprimer",
+	  "action": function () {
+	    var din = node.attr('id');
+	    $.post('/ajax/root_interface/din_supprime.php', { din: din }, function () {
+		$('#listechamps').jstree('refresh', -1);
+	      });
+	  }
+	}
+            
+	items.coller_inf = {
+	  "label": "Coller champ",
+	  "_disabled": true
+	};
+	if (colle_inf_id != null) {
+	  items.coller_inf._disabled = false;
+	  items.coller_inf.action = function () {
+	    $.post('/ajax/root_interface/din_colle.php', 
+	    { din: node.attr('id'), inf: colle_inf_id }, 
+		   function () {
+		     colle_inf_id = null;
+		     $('#listechamps').jstree('refresh', -1);
+		   });
+	  }
+	};      
+      }
+
+      items.coller_dossier = {
+	"label": "Coller dossier",
+	"_disabled": true
+      };
+      if (colle_din_id != null) {
+	items.coller_dossier._disabled = false;
+	items.coller_dossier.action = function () {
+	  $.post('/ajax/root_interface/din_colle.php', 
+	  { din: node.attr('id'), din2: colle_din_id }, 
+		 function () {
+		   colle_din_id = null;
+		   $('#listechamps').jstree('refresh', -1);
+		 });
+	}
+      };   
     }
     if (type.substring (0, 6) == 'champ_') {
-	items.editer = {
-	    "label": "Editer",
-	    "action": function () {
-		info_edite (node.attr('id'));
-	    }
-	};
-	items.usager = {
-	    "label": "Usage",
-	    "action": function () {
-	      info_usage (node.attr('id'))
-	    }
-	};
+      items.couper = {
+	"label": "Couper",
+	"action": function () {
+	  colle_inf_id = node.attr('id');
+	  colle_din_id = null;
+	}
+      };	
+      items.editer = {
+	"label": "Editer",
+	"action": function () {
+	  info_edite (node.attr('id'));
+	}
+      };
+      items.usager = {
+	"label": "Usage",
+	"action": function () {
+	  info_usage (node.attr('id'))
+	}
+      };
     }
     return items;
 }
@@ -1458,13 +1547,6 @@ function on_listechamps_rechercher_change () {
 
 function on_listechamps_usedonly_change () {
   $("#listechamps").jstree ("refresh", -1);
-}
-
-function on_listechamps_update_click () {
-  $.get('/ajax/root_interface/listechamps_update.php', function (ret) {
-      alert (ret+' nouveaux champs téléchargés');
-      $("#listechamps").jstree ("refresh", -1);      
-    });
 }
 
 function get_listechamps_url () {
@@ -1633,7 +1715,6 @@ Boîte de notes : <br/>
   <div>&nbsp;Rechercher champs : <input type="text" id="listechamps_rechercher"></input>
   </div>
   <div style="margin: 5px 0"><input type="checkbox" id="listechamps_usedonly"><label for="listechamps_usedonly">Champs utilisés seulement</label></div>
-  <div style="margin: 5px 0"><input type="button" id="listechamps_update" value="Télécharger nouveaux"></input></div>
   <div id="listechamps"></div>
 </div>
 

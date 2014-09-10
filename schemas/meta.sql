@@ -349,17 +349,19 @@ COMMENT ON FUNCTION meta_categorie_rename(prm_token integer, prm_cat_id integer,
 'Renomme une catégorie.';
 
 DROP FUNCTION IF EXISTS meta_dirinfo_add(prm_din_id_parent integer, prm_libelle character varying);
--- CREATE OR REPLACE FUNCTION meta_dirinfo_add(prm_din_id_parent integer, prm_libelle character varying) RETURNS integer
---     LANGUAGE plpgsql
---     AS $$
--- DECLARE
--- 	ret integer;
--- BEGIN
--- 	INSERT INTO meta.dirinfo (din_id_parent, din_libelle) VALUES (prm_din_id_parent, prm_libelle)
--- 		RETURNING din_id INTO ret;
--- 	RETURN ret;
--- END;
--- $$;
+CREATE OR REPLACE FUNCTION meta_dirinfo_add(prm_token integer, prm_din_id_parent integer, prm_libelle character varying) RETURNS integer
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+	ret integer;
+BEGIN
+	PERFORM login._token_assert (prm_token, FALSE, FALSE);
+	PERFORM login._token_assert_interface (prm_token);
+	INSERT INTO meta.dirinfo (din_id_parent, din_libelle) VALUES (prm_din_id_parent, prm_libelle)
+		RETURNING din_id INTO ret;
+	RETURN ret;
+END;
+$$;
 
 DROP FUNCTION IF EXISTS meta_dirinfo_add_avec_id(prm_id integer, prm_din_id_parent integer, prm_libelle character varying);
 CREATE OR REPLACE FUNCTION meta_dirinfo_add_avec_id(prm_token integer, prm_id integer, prm_din_id_parent integer, prm_libelle character varying) RETURNS integer
@@ -380,13 +382,15 @@ COMMENT ON FUNCTION meta_dirinfo_add_avec_id(prm_token integer, prm_id integer, 
 'Ajoute un nouveau répertoire de champs (utilisé avec la banque de champs).';
 
 DROP FUNCTION IF EXISTS meta_dirinfo_delete(prm_din_id integer);
--- CREATE OR REPLACE FUNCTION meta_dirinfo_delete(prm_din_id integer) RETURNS void
---     LANGUAGE plpgsql
---     AS $$
--- BEGIN
--- 	DELETE FROM meta.dirinfo WHERE din_id = prm_din_id;
--- END;
--- $$;
+CREATE OR REPLACE FUNCTION meta_dirinfo_delete(prm_token integer, prm_din_id integer) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+	PERFORM login._token_assert (prm_token, FALSE, FALSE);
+	PERFORM login._token_assert_interface (prm_token);
+	DELETE FROM meta.dirinfo WHERE din_id = prm_din_id;
+END;
+$$;
 
 DROP FUNCTION IF EXISTS meta_dirinfo_dernier ();
 CREATE OR REPLACE FUNCTION meta_dirinfo_dernier (prm_token integer) RETURNS integer
@@ -424,22 +428,26 @@ COMMENT ON FUNCTION meta_dirinfo_list(prm_token integer, prm_din_id_parent integ
 'Retourne la liste des répertoires de champs inclus dans un répertoire donné.';
 
 DROP FUNCTION IF EXISTS meta_dirinfo_move(prm_din_id integer, prm_din_id_parent integer);
--- CREATE OR REPLACE FUNCTION meta_dirinfo_move(prm_din_id integer, prm_din_id_parent integer) RETURNS void
---     LANGUAGE plpgsql
---     AS $$
--- BEGIN
--- 	UPDATE meta.dirinfo SET din_id_parent = prm_din_id_parent WHERE din_id = prm_din_id;
--- END;
--- $$;
+CREATE OR REPLACE FUNCTION meta_dirinfo_move(prm_token integer, prm_din_id integer, prm_din_id_parent integer) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+	PERFORM login._token_assert (prm_token, FALSE, FALSE);
+	PERFORM login._token_assert_interface (prm_token);
+	UPDATE meta.dirinfo SET din_id_parent = prm_din_id_parent WHERE din_id = prm_din_id;
+END;
+$$;
 
 DROP FUNCTION IF EXISTS meta_dirinfo_update(prm_din_id integer, prm_libelle character varying);
--- CREATE OR REPLACE FUNCTION meta_dirinfo_update(prm_din_id integer, prm_libelle character varying) RETURNS void
---     LANGUAGE plpgsql
---     AS $$
--- BEGIN
--- 	UPDATE meta.dirinfo SET din_libelle = prm_libelle WHERE din_id = prm_din_id;
--- END;
--- $$;
+CREATE OR REPLACE FUNCTION meta_dirinfo_update(prm_token integer, prm_din_id integer, prm_libelle character varying) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+	PERFORM login._token_assert (prm_token, FALSE, FALSE);
+	PERFORM login._token_assert_interface (prm_token);
+	UPDATE meta.dirinfo SET din_libelle = prm_libelle WHERE din_id = prm_din_id;
+END;
+$$;
 
 DROP FUNCTION IF EXISTS meta_entite_infos_par_code(prm_code character varying);
 CREATE OR REPLACE FUNCTION meta_entite_infos_par_code(prm_token integer, prm_code character varying) RETURNS entite
@@ -938,13 +946,15 @@ $$;
 COMMENT ON FUNCTION meta_info_liste_champs_par_secteur_categorie(prm_token integer, prm_cat_id integer, prm_sec_code character varying) IS 'Retourne la liste des champs de type "groupe" couvrant le secteur donné affectés dans une fiche du portail';
 
 DROP FUNCTION IF EXISTS meta_info_move(prm_inf_id integer, prm_din_id integer);
--- CREATE OR REPLACE FUNCTION meta_info_move(prm_inf_id integer, prm_din_id integer) RETURNS void
---     LANGUAGE plpgsql
---     AS $$
--- BEGIN
--- 	UPDATE meta.info SET din_id = prm_din_id WHERE inf_id = prm_inf_id;
--- END;
--- $$;
+CREATE OR REPLACE FUNCTION meta_info_move(prm_token integer, prm_inf_id integer, prm_din_id integer) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+	PERFORM login._token_assert (prm_token, FALSE, FALSE);
+	PERFORM login._token_assert_interface (prm_token);
+	UPDATE meta.info SET din_id = prm_din_id WHERE inf_id = prm_inf_id;
+END;
+$$;
 
 DROP FUNCTION IF EXISTS meta_info_update(prm_inf_id integer, prm_int_id integer, prm_code character varying, prm_libelle character varying, prm_libelle_complet character varying, prm_etendu boolean, prm_historique boolean, prm_multiple boolean);
 CREATE OR REPLACE FUNCTION meta_info_update(prm_token integer, prm_inf_id integer, prm_int_id integer, prm_code character varying, prm_libelle character varying, prm_libelle_complet character varying, prm_etendu boolean, prm_historique boolean, prm_multiple boolean) RETURNS void

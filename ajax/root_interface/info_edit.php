@@ -198,7 +198,7 @@ function on_inf__date_echeance_click () {
 <input type="hidden" id="dirid" value="<?= $_GET['dirid'] ?>"></input>
 <table width="100%" cellpadding="5">
   <tr>
-    <td width="70">Type&nbsp;:</td><td><select disabled id="int_id"> <?= liste_types ($types, $info['int_id']); ?></select></td>
+    <td width="70">Type&nbsp;:</td><td><select id="int_id"> <?= liste_types ($types, $info['int_id']); ?></select></td>
   </tr>
   <tr>
     <td>Libellé&nbsp;:</td><td><input type="text" id="inf_libelle" size="30" value="<?= $info['inf_libelle'] ?>"></input></td>
@@ -216,7 +216,7 @@ function on_inf__date_echeance_click () {
     <td></td><td>
       <input type="checkbox" id="inf_etendu" <?= $info['inf_etendu'] ? "checked" :"" ?>></input><label for="inf_etendu">Etendu</label>
       <input type="checkbox" id="inf_historique" <?= $info['inf_historique'] ? "checked" :"" ?>></input><label for="inf_historique">Historique</label>
-      <input type="checkbox" disabled id="inf_multiple" <?= $info['inf_multiple'] ? "checked" :"" ?>></input><label for="inf_multiple">Multiple</label>
+      <input type="checkbox" id="inf_multiple" <?= $info['inf_multiple'] ? "checked" :"" ?>></input><label for="inf_multiple">Multiple</label>
     </td>
   </tr>
 
@@ -229,32 +229,32 @@ function on_inf__date_echeance_click () {
   </tr>
 
   <tr class="champ_type type_<?= $thetypes['selection']['int_id'] ?>">
-    <td>Liste de sélection&nbsp;:</td><td><select disabled id="inf__selection_code"><option value=""></option><option value="...">Nouveau ...</option><?= liste_selections ($selections, $info['inf__selection_code'])?></select> <button id="inf__selection_code_edit">éditer</button></td>
+    <td>Liste de sélection&nbsp;:</td><td><select id="inf__selection_code"><option value=""></option><option value="...">Nouveau ...</option><?= liste_selections ($selections, $info['inf__selection_code'])?></select> <button id="inf__selection_code_edit">éditer</button></td>
   </tr>
 
   <tr class="champ_type type_<?= $thetypes['groupe']['int_id'] ?>">
-    <td>Thématique&nbsp;:</td><td><select disabled id="inf__groupe_type"><option value=""></option><?= liste_secteurs ($secteurs, $info['inf__groupe_type']) ?></select></td>
+    <td>Thématique&nbsp;:</td><td><select id="inf__groupe_type"><option value=""></option><?= liste_secteurs ($secteurs, $info['inf__groupe_type']) ?></select></td>
   </tr>
   <tr class="champ_type type_<?= $thetypes['groupe']['int_id'] ?>">
   <td>Public concerné&nbsp;:</td><td><select id="inf__groupe_soustype"><?= liste_secteur_types ($info['inf__groupe_type'], $info['inf__groupe_soustype']); ?></select></td>
   </tr>
   
   <tr class="champ_type type_<?= $thetypes['contact']['int_id'] ?>">
-    <td>Vers&nbsp;:</td><td><select disabled id="inf__contact_filtre"><?= liste_entites ($entites, $info['inf__contact_filtre']) ?></select></td>
+    <td>Vers&nbsp;:</td><td><select id="inf__contact_filtre"><?= liste_entites ($entites, $info['inf__contact_filtre']) ?></select></td>
   </tr>
   <tr class="champ_type type_<?= $thetypes['contact']['int_id'] ?>">
-    <td>Thématique&nbsp;:</td><td><select disabled id="inf__contact_secteur"><?= liste_secteurs ($secteurs, $info['inf__contact_secteur']) ?></select></td>
+    <td>Thématique&nbsp;:</td><td><select id="inf__contact_secteur"><?= liste_secteurs ($secteurs, $info['inf__contact_secteur']) ?></select></td>
   </tr>
   
   <tr class="champ_type type_<?= $thetypes['metier']['int_id'] ?>">
-    <td>Type de personne&nbsp;:</td><td><select disabled id="inf__metier_secteur"><?= liste_entites ($entites, $info['inf__metier_secteur']) ?></select></td>
+    <td>Type de personne&nbsp;:</td><td><select id="inf__metier_secteur"><?= liste_entites ($entites, $info['inf__metier_secteur']) ?></select></td>
   </tr>
 
   <tr class="champ_type type_<?= $thetypes['etablissement']['int_id'] ?>">
-    <td></td><td><input type="checkbox" disabled id="inf__etablissement_interne" <?= $info['inf__etablissement_interne'] ? "checked" :"" ?>></input><label for="inf__etablissement_interne">Etablissement (coché) ou Partenaire (non coché)</label></td>
+    <td></td><td><input type="checkbox" id="inf__etablissement_interne" <?= $info['inf__etablissement_interne'] ? "checked" :"" ?>></input><label for="inf__etablissement_interne">Etablissement (coché) ou Partenaire (non coché)</label></td>
   </tr>
   <tr class="champ_type type_<?= $thetypes['etablissement']['int_id'] ?>">
-    <td>Thématique&nbsp;:</td><td><select disabled id="inf__etablissement_secteur"><option value=""></option><?= liste_secteurs ($secteurs, $info['inf__etablissement_secteur']) ?></select></td>
+    <td>Thématique&nbsp;:</td><td><select id="inf__etablissement_secteur"><option value=""></option><?= liste_secteurs ($secteurs, $info['inf__etablissement_secteur']) ?></select></td>
   </tr>
 
   <tr class="champ_type type_<?= $thetypes['date']['int_id'] ?>">
