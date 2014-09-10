@@ -640,7 +640,7 @@ function on_liste_recherche_click () {
 // Affichage dans la colonne de gauche
 
 function sup_col_gauche () {
-  global $infos, $type, $base, $statuts_usager;
+  global $infos, $type, $base, $statuts_usager, $cycle_statuts;
   $ret = "";
   $ret .= '<h3 class="accrecherche accplus">Recherche</h3>';
   $ret .= "<div>";
@@ -787,9 +787,16 @@ function sup_col_gauche () {
 	  $ret .= '</select><br/>';
 	}
 	$ret .= '</div>';
+	$ret .= 'Statut : <select name="rech-'.$info['inf_code'].'-sta">';
+	$ret .= '<option value="">(tous)</option>';
+	foreach ($cycle_statuts as $k => $lib) {
+	  $selected = $_GET['rech-'.$info['inf_code'].'-sta'] == $k ? ' selected' : '';
+	  $ret .= '<option'.$selected.' value="'.$k.'">'.$lib.'</option>';
+	}
+	$ret .= '</select><br/>';
 	$ret .= 'Du <input name="rech-'.$info['inf_code'].'-du'.'" class="datepicker" type="text" size="8" value="'.$_GET['rech-'.$info['inf_code'].'-du'].'"></input><br/>';
 	$ret .= 'Au <input name="rech-'.$info['inf_code'].'-au'.'" class="datepicker" type="text" size="8" value="'.$_GET['rech-'.$info['inf_code'].'-au'].'"></input><br/>';
-
+	
 
 
       } else if ($type[$info['int_id']]['int_code'] == 'statut_usager') {
@@ -899,6 +906,12 @@ function ajoute_params_recherche ($p) {
 	$p['rech-'.$info['inf_code'].'-eta'] = $_GET['rech-'.$info['inf_code'].'-eta'];
       if (isset ($_GET['rech-'.$info['inf_code'].'-grp']))
 	$p['rech-'.$info['inf_code'].'-grp'] = $_GET['rech-'.$info['inf_code'].'-grp'];
+      if (isset ($_GET['rech-'.$info['inf_code'].'-du']))
+	$p['rech-'.$info['inf_code'].'-du'] = $_GET['rech-'.$info['inf_code'].'-du'];
+      if (isset ($_GET['rech-'.$info['inf_code'].'-au']))
+	$p['rech-'.$info['inf_code'].'-au'] = $_GET['rech-'.$info['inf_code'].'-au'];
+      if (isset ($_GET['rech-'.$info['inf_code'].'-sta']))
+	$p['rech-'.$info['inf_code'].'-sta'] = $_GET['rech-'.$info['inf_code'].'-sta'];
     }
   }
   return $p;
@@ -1075,6 +1088,17 @@ function dates_correspondent ($info, $groupe, $re) {
   return $found;
 }
 
+
+function statut_correspond ($info, $groupe) {
+  global $base;
+  if (!isset ($_GET['rech-'.$info['inf_code'].'-sta']))
+    return true;  
+  $sta_filtre = $_GET['rech-'.$info['inf_code'].'-sta'];
+  if ($sta_filtre === '')
+    return true;
+  return $sta_filtre == $groupe['peg_cycle_statut'];
+}
+
 function filtre_groupes ($rs) {
   global $infos, $base, $type;
   foreach ($infos as $info) {
@@ -1100,11 +1124,11 @@ function filtre_groupes ($rs) {
 	      if ($groupe['eta_id'] == $filtre['eta']) {
 		if ($filtre['grp']) {
 		  if ($groupe['grp_id'] == $filtre['grp']) {
-		    if (dates_correspondent ($info, $groupe, $re))
+		    if (dates_correspondent ($info, $groupe, $re) && statut_correspond ($info, $groupe))
 		      $found = true;		    
 		  }
 		} else {
-		  if (dates_correspondent ($info, $groupe, $re))
+		  if (dates_correspondent ($info, $groupe, $re) && statut_correspond ($info, $groupe))
 		    $found = true;
 		}
 	      }
