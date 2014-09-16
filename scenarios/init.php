@@ -59,6 +59,12 @@ foreach ($secteurs as $s) {
   $codes_secteurs[] = $s['sec_code'];
 }
 
+$infos_types = $base->meta_infos_type_liste ($token);
+$ids_infos_types = array ();
+foreach ($infos_types as $infos_type) {
+  $ids_infos_types[$infos_type['int_code']] = $infos_type['int_id'];
+}
+
 /* Ajout d'une catégorie */
 $cat_id = $base->meta_categorie_add ($token, "Catégorie par défaut", "cat1");
 
@@ -84,6 +90,15 @@ if ($inf['inf_id']) {
 $gut_id = $base->login_grouputil_add ($token, "Administrateur système");
 $base->login_grouputil_groupe_set ($token, $gut_id, array ($grp_id));
 $base->login_grouputil_portail_set ($token, $gut_id, array ($por_id));
+
+/* Ajout d'un champ statut d'usager */
+$base->meta_info_add($token, $ids_infos_types['statut_usager'], 'statut_usager', "Statut d'usager", null, false, false, false);
+
+/* Ajout d'un champ nom */
+$base->meta_info_add($token, $ids_infos_types['texte'], 'nom', 'Nom', null, false, false, false);
+
+/* Ajout d'un champ prenom */
+$base->meta_info_add($token, $ids_infos_types['texte'], 'prenom', 'Prénom', null, false, false, false);
 
 /* Ajout d'un usager */
 $per_id = $base->personne_ajoute ($token, 'usager');
