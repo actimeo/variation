@@ -177,6 +177,8 @@ foreach ($infos as $info) {
     continue;
   if (get_class ($info['obj']) == 'Info_date_calcule')
     continue;
+  if (get_class ($info['obj']) == 'Info_coche_calcule')
+    continue;
   $sql .= $info['obj']->fct()." (".$_SESSION['token'].", per_id, '".pg_escape_string ($info['inf_code'])."') AS ".$info['inf_code'].", ";
   
   if (isset ($_GET['rech-'.$info['inf_code']]) && $_GET['rech-'.$info['inf_code']]) {

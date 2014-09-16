@@ -125,6 +125,11 @@ function valeur_champ ($per_id, $inf_code) {
     $valeur = $val ? "X" : "";
     break;
 
+  case 'coche_calcule':
+    $obj = new Info_coche_calcule ($inf);
+    $valeur = $obj->valeurCalculee ($per_id) ? 'X' : '';
+    break;
+    
   case 'selection':
     $multiple = $inf['inf_multiple'];  
     if ($multiple) {
