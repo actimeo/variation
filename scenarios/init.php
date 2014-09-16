@@ -92,13 +92,13 @@ $base->login_grouputil_groupe_set ($token, $gut_id, array ($grp_id));
 $base->login_grouputil_portail_set ($token, $gut_id, array ($por_id));
 
 /* Ajout d'un champ statut d'usager */
-$base->meta_info_add($token, $ids_infos_types['statut_usager'], 'statut_usager', "Statut d'usager", null, false, false, false);
+//$base->meta_info_add($token, $ids_infos_types['statut_usager'], 'statut_usager', "Statut d'usager", null, false, false, false);
 
 /* Ajout d'un champ nom */
-$base->meta_info_add($token, $ids_infos_types['texte'], 'nom', 'Nom', null, false, false, false);
+//$base->meta_info_add($token, $ids_infos_types['texte'], 'nom', 'Nom', null, false, false, false);
 
 /* Ajout d'un champ prenom */
-$base->meta_info_add($token, $ids_infos_types['texte'], 'prenom', 'Prénom', null, false, false, false);
+//$base->meta_info_add($token, $ids_infos_types['texte'], 'prenom', 'Prénom', null, false, false, false);
 
 /* Ajout d'un usager */
 $per_id = $base->personne_ajoute ($token, 'usager');
