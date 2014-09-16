@@ -44,9 +44,11 @@ class Info_date_calcule extends Info_base {
   }
 
   public function afficheData ($re, $ppcm, $i, $class) {
-    $val = $this->valeurCalculee ($re['per_id']);
-    $val = '<td class="'.$class.'" rowspan="'.$ppcm.'">'.$val.'</td>';    
-    echo $val;
+    if ($i == 0) {
+      $val = $this->valeurCalculee ($re['per_id']);
+      $val = '<td class="'.$class.'" rowspan="'.$ppcm.'">'.$val.'</td>';    
+      echo $val;
+    }
   }
 
   function valeurCalculee ($per_id) {
