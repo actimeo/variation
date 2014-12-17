@@ -1793,17 +1793,19 @@ COMMENT ON FUNCTION meta_secteur_type_update(prm_token integer, prm_set_id integ
 'Modifie les informations d''un type d''un secteur.';
 
 DROP FUNCTION IF EXISTS meta_selection_add(prm_code character varying, prm_libelle character varying, prm_info character varying);
--- CREATE OR REPLACE FUNCTION meta_selection_add(prm_code character varying, prm_libelle character varying, prm_info character varying) RETURNS integer
---     LANGUAGE plpgsql
---     AS $$
--- DECLARE
--- 	ret integer;
--- BEGIN
--- 	INSERT INTO meta.selection (sel_code, sel_libelle, sel_info) VALUES (prm_code, prm_libelle, prm_info) 
--- 		RETURNING sel_id INTO ret;
--- 	RETURN ret;
--- END;
--- $$;
+CREATE OR REPLACE FUNCTION meta_selection_add(prm_token integer, prm_code character varying, prm_libelle character varying, prm_info character varying) RETURNS integer
+     LANGUAGE plpgsql
+     AS $$
+ DECLARE
+ 	ret integer;
+ BEGIN
+	PERFORM login._token_assert (prm_token, FALSE, FALSE);
+	PERFORM login._token_assert_interface (prm_token);
+ 	INSERT INTO meta.selection (sel_code, sel_libelle, sel_info) VALUES (prm_code, prm_libelle, prm_info) 
+ 		RETURNING sel_id INTO ret;
+ 	RETURN ret;
+ END;
+ $$;
 
 DROP FUNCTION IF EXISTS meta_selection_add_avec_id(prm_id integer, prm_code character varying, prm_libelle character varying, prm_info character varying);
 CREATE OR REPLACE FUNCTION meta_selection_add_avec_id(prm_token integer, prm_id integer, prm_code character varying, prm_libelle character varying, prm_info character varying) RETURNS integer
